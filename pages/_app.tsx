@@ -13,7 +13,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <UIProvider>
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
-          <Component {...pageProps} />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </UIProvider>
     </AuthProvider>

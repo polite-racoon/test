@@ -1,16 +1,16 @@
-import type { NextPage } from 'next';
-import Image from 'next/image';
-import { Box, Grid, Typography } from '@mui/material';
-import { Logger } from '../components/ui';
-import { useAuth } from '../context/auth';
-import { ItemList } from '../components/ui';
+import type { NextPage } from "next";
+import Image from "next/legacy/image";
+import { Box, Grid, Typography } from "@mui/material";
+import { Logger } from "../components/ui";
+import { useAuth } from "../context/auth";
+import { ItemList } from "../components/ui";
 
 const Home: NextPage = () => {
   const { user } = useAuth();
 
   return (
     <>
-      <Box sx={{ margin: '1rem 0 2rem 0' }}>{!user && <Logger />}</Box>
+      <Box sx={{ margin: "1rem 0 2rem 0" }}>{!user && <Logger />}</Box>
       <Box display="flex" justifyContent="center">
         <Image
           src="/cookie2.jpg"
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         />
       </Box>
       <Box display="flex" justifyContent="center">
-        <Typography variant={'h5'} fontStyle="italic" sx={{ margin: '2rem' }}>
+        <Typography variant={"h5"} fontStyle="italic" sx={{ margin: "2rem" }}>
           - galletas artesanales -
         </Typography>
       </Box>

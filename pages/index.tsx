@@ -24,7 +24,7 @@ const Home: NextPage = () => {
           - galletas artesanales -
         </Typography>
       </Box>
-      <ItemList />
+      {/* <ItemList /> */}
     </>
   );
 };

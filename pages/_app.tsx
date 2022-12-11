@@ -9,16 +9,14 @@ import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <AuthProvider>
-      <UIProvider>
-        <ThemeProvider theme={lightTheme}>
-          <CssBaseline />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ThemeProvider>
-      </UIProvider>
-    </AuthProvider>
+    <UIProvider>
+      <ThemeProvider theme={lightTheme}>
+        <CssBaseline />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </UIProvider>
   );
 }
 

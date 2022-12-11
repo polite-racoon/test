@@ -3,7 +3,6 @@ import { CssBaseline, ThemeProvider } from "@mui/material";
 import { lightTheme } from "../themes";
 import { AuthProvider } from "../context/auth";
 import { UIProvider } from "../context/ui";
-import { Layout } from "../components/layouts";
 
 import "../styles/globals.css";
 
@@ -13,9 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <UIProvider>
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <Component {...pageProps} />
         </ThemeProvider>
       </UIProvider>
     </AuthProvider>

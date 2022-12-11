@@ -1,6 +1,25 @@
-import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type { AppProps } from "next/app";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { lightTheme } from "../themes";
+import { AuthProvider } from "../context/auth";
+import { UIProvider } from "../context/ui";
+import { Layout } from "../components/layouts";
 
-export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+import "../styles/globals.css";
+
+function MyApp({ Component, pageProps }: AppProps) {
+  return (
+    <AuthProvider>
+      <UIProvider>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </UIProvider>
+    </AuthProvider>
+  );
 }
+
+export default MyApp;

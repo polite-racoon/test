@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 import { DeleteItem } from "./DeleteItem";
 import firebase from "../../firebase/client";
+import { getImageNameFromImageUrl } from "../../functions";
 
 export const DeleteList = () => {
   const [items, setItems] = useState([]);
@@ -22,10 +23,18 @@ export const DeleteList = () => {
     };
   }, []);
 
-  const onDelete = (id) => {
-    db.collection("productos")
-      .doc(id)
+  const onDelete = (id, imageUrl) => {
+    const imageName = getImageNameFromImageUrl(imageUrl);
+    const desertRef = firebase
+      .storage()
+      .ref()
+      .child(`fotosDeProductos/${imageName}`);
+
+    desertRef
       .delete()
+      .then(() => {
+        db.collection("productos").doc(id).delete();
+      })
       .then(() => {
         console.log("document deleted");
       })

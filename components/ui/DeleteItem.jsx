@@ -24,7 +24,7 @@ export const DeleteItem = ({ title, imageUrl, price, id, onDelete }) => {
           size="small"
           sx={{ textTransform: "none", position: "absolute", bottom: "0.5rem" }}
           endIcon={<DeleteIcon />}
-          onClick={() => onDelete(id)}
+          onClick={() => onDelete(id, imageUrl)}
         >
           Borrar
         </Button>

@@ -63,11 +63,11 @@ export const Uploader = () => {
         </Box>
         <form>
           <div>
-            <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Tipo</InputLabel>
+            <FormControl fullWidth color="secondary">
+              <InputLabel id="tipo">Tipo</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                labelId="tipo"
+                id="selector"
                 value={formData.tipo}
                 name="tipo"
                 label="Tipo"
@@ -162,6 +162,8 @@ export const Uploader = () => {
             display: flex;
             flex-direction: column;
             align-items: center;
+          }
+
           }
           .inputDiv {
             position: relative;

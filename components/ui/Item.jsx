@@ -11,23 +11,33 @@ export const Item = ({ title, imageUrl, price }) => {
       <Image src={imageUrl} width={680} height={1020} alt="" />
       <Box sx={{ padding: "0.5rem" }}>
         <Typography variant="subtitle2">{title}</Typography>
+      </Box>
+      <Box
+        sx={{
+          position: "absolute",
+          bottom: "0rem",
+          padding: "0.5rem",
+        }}
+      >
         <Typography variant="h6" sx={{ color: "gray" }}>
           ${price}
         </Typography>
         <Stars />
-      </Box>
-      <Box display="flex" justifyContent="center">
-        <Button
-          variant="contained"
-          disableElevation
-          color="info"
-          size="small"
-          sx={{ textTransform: "none", position: "absolute", bottom: "0.5rem" }}
-          endIcon={<AddCircleOutlineIcon />}
-          onClick={() => {}}
-        >
-          Agregar al carrito
-        </Button>
+        <Box display="flex" justifyContent="center">
+          <Button
+            variant="contained"
+            disableElevation
+            color="info"
+            size="small"
+            sx={{
+              textTransform: "none",
+            }}
+            endIcon={<AddCircleOutlineIcon />}
+            onClick={() => {}}
+          >
+            Agregar al carrito
+          </Button>
+        </Box>
       </Box>
     </Card>
   );

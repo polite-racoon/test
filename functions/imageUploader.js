@@ -1,4 +1,4 @@
-import firebase from '../firebase/client';
+import firebase from "../firebase/client";
 
 export const imageUplodaer = (
   image,
@@ -10,15 +10,15 @@ export const imageUplodaer = (
   setLoading(true);
   const db = firebase.firestore();
   // sube imagen a firebase storage y devuelve url
-  const storageRef = firebase.storage().ref(`/cajas/${image.name}`);
+  const storageRef = firebase.storage().ref(`/fotosDeProductos/${image.name}`);
   const task = storageRef.put(image);
   task.on(
-    'state_changed',
+    "state_changed",
     (snapshot) => {
-      console.log('snapshot: ', snapshot);
+      console.log("snapshot: ", snapshot);
     },
     (error) => {
-      console.log('error guardando la imagen: ', error.message);
+      console.log("error guardando la imagen: ", error.message);
       setLoading(false);
     },
     () => {
@@ -29,10 +29,10 @@ export const imageUplodaer = (
           date: Date.now(),
         };
 
-        db.collection('productos')
+        db.collection("productos")
           .add(doc)
           .then(() => {
-            setFormData({ title: '', description: '', price: '' });
+            setFormData({ title: "", description: "", price: "" });
             setImage(null);
             setLoading(false);
           })

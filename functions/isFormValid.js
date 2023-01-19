@@ -1,6 +1,10 @@
 export const isFormValid = (formData, image, setErrorObj) => {
   const errors = {};
 
+  if (!formData.tipo) {
+    errors.tipo = true;
+  }
+
   if (!formData.title) {
     errors.title = true;
   }

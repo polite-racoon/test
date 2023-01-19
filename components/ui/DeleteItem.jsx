@@ -1,9 +1,9 @@
 import Image from "next/legacy/image";
 import { Box, Button, Card, Typography } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { Stars } from "./Stars";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export const Item = ({ title, imageUrl, price }) => {
+export const DeleteItem = ({ title, imageUrl, price, id, onDelete }) => {
   return (
     <Card
       sx={{ height: "28rem", backgroundColor: "#eee", position: "relative" }}
@@ -18,15 +18,15 @@ export const Item = ({ title, imageUrl, price }) => {
       </Box>
       <Box display="flex" justifyContent="center">
         <Button
-          variant="contained"
+          variant="outlined"
           disableElevation
-          color="info"
+          color="warning"
           size="small"
           sx={{ textTransform: "none", position: "absolute", bottom: "0.5rem" }}
-          endIcon={<AddCircleOutlineIcon />}
-          onClick={() => {}}
+          endIcon={<DeleteIcon />}
+          onClick={() => onDelete(id)}
         >
-          Agregar al carrito
+          Borrar
         </Button>
       </Box>
     </Card>

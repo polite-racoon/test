@@ -1,22 +1,21 @@
-import { createTheme } from '@mui/material';
-import { cyan, grey, purple, red } from '@mui/material/colors';
+import { createTheme } from "@mui/material";
 export const lightTheme = createTheme({
   palette: {
-    mode: 'light',
+    mode: "light",
     // background: {
     //   default: grey[100],
     // },
     primary: {
-      main: '#fff', //cyan[100],
+      main: "#fff", //cyan[100],
     },
     secondary: {
-      main: '#000',
+      main: "#000",
     },
     info: {
-      main: '#bd5611',
+      main: "#bd5611",
     },
-    error: {
-      main: red[200], //'#9500ae',
+    warning: {
+      main: "#9500ae",
     },
   },
 

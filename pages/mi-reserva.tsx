@@ -1,7 +1,8 @@
+import { NextPage } from "next";
 import { Box, Typography } from "@mui/material";
 import { Layout } from "../components/layouts";
 
-export const MiReserva = () => {
+export const MiReserva: NextPage = () => {
   return (
     <Layout>
       <Box sx={{ display: "flex", justifyContent: "center" }}>

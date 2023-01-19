@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "vainilla",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -26,5 +26,8 @@
     "react-google-button": "^0.7.2",
     "sharp": "^0.31.2",
     "typescript": "4.9.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0"
   }
 }

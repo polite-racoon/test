@@ -1,11 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from 'react';
-import Compressor from 'compressorjs';
-import { IconButton } from '@mui/material';
-import { PhotoCamera } from '@mui/icons-material';
+import React, { useState, useEffect } from "react";
+import { IconButton } from "@mui/material";
+import { PhotoCamera } from "@mui/icons-material";
 
 export default function ImageInput(props) {
-  const [localImageUrl, setLocalImageUrl] = useState('');
+  const [localImageUrl, setLocalImageUrl] = useState("");
 
   // cuando cambia props.image devuelve una url local. Se utilizó useEffect para acceder a window
   useEffect(() => {
@@ -13,58 +12,36 @@ export default function ImageInput(props) {
       const url = window.URL.createObjectURL(props.image);
       setLocalImageUrl(url);
     } else {
-      setLocalImageUrl('');
+      setLocalImageUrl("");
     }
   }, [props.image]);
 
   // determina si el archivo es una imagen
   const isFileImage = (file) => {
-    return file.type.split('/')[0] === 'image';
+    return file.type.split("/")[0] === "image";
   };
 
   // comprime y dimensiona la imagen ingresada y la entrega al componente padre
-  const compress = (e) => {
+  const handleChange = (e) => {
     const image = e.target.files[0];
     if (!image) {
       return;
     }
     if (!isFileImage(image)) {
-      alert('El archivo seleccionado no es una imagen.');
+      alert("El archivo seleccionado no es una imagen.");
       props.onChange(null);
       return;
     }
-
-    // eslint-disable-next-line no-new
-    new Compressor(image, {
-      quality: 1, // its not recommended to go below 0.6.
-      width: 300,
-      convertSize: 10000,
-      success: (compressedResult) => {
-        props.onChange(compressedResult);
-      },
-    });
+    props.onChange(image);
   };
 
   return (
     <>
       <div className="main">
         <IconButton aria-label="upload picture" component="label">
-          <input hidden accept="image/*" type="file" onChange={compress} />
-          <PhotoCamera sx={{ fontSize: '2.5rem', color: '#555' }} />
+          <input hidden accept="image/*" type="file" onChange={handleChange} />
+          <PhotoCamera sx={{ fontSize: "2.5rem", color: "#555" }} />
         </IconButton>
-        {/* <label>
-          <div className="imageSelectButton">
-            <PhotoCameraIcon />
-          </div>
-
-          <input
-            accept="image/*,capture=camera"
-            capture="camera"
-            type="file"
-            onChange={compress}
-            style={{ display: 'none' }}
-          />
-        </label> */}
         {localImageUrl && (
           <img src={localImageUrl} height="200" alt="caja de suculentas" />
         )}

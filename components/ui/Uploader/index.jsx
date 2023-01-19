@@ -58,9 +58,6 @@ export const Uploader = () => {
   return (
     <>
       <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
-        <Box sx={{ margin: "1rem" }}>
-          <Typography variant="h6">Uploader</Typography>
-        </Box>
         <form>
           <div>
             <FormControl fullWidth color="secondary">
@@ -73,9 +70,10 @@ export const Uploader = () => {
                 label="Tipo"
                 onChange={onInputChange}
               >
+                <MenuItem value={"bodas y bautizos"}>bodas y bautizos</MenuItem>
+                <MenuItem value={"cumpleaños"}>cumpleaños</MenuItem>
+                <MenuItem value={"enamorados"}>enamorados</MenuItem>
                 <MenuItem value={"navidad"}>navidad</MenuItem>
-                <MenuItem value={"cumpleanos"}>cumpleanos</MenuItem>
-                <MenuItem value={"bautizos"}>bautizos</MenuItem>
               </Select>
             </FormControl>
             <p className={errorObj.tipo ? "error" : "notError"}>
@@ -89,7 +87,7 @@ export const Uploader = () => {
                 value={formData.title}
                 maxLength={50}
                 onChange={onInputChange}
-                placeholder={"title"}
+                placeholder={"Título"}
               />
             </div>
             <p className={errorObj.title ? "error" : "notError"}>
@@ -103,7 +101,7 @@ export const Uploader = () => {
                 value={formData.description}
                 maxLength={200}
                 onChange={onInputChange}
-                placeholder={"description"}
+                placeholder={"Descripción"}
                 rows={7}
               />
             </div>
@@ -116,7 +114,7 @@ export const Uploader = () => {
                 name="price"
                 value={formData.price}
                 onChange={onInputChange}
-                placeholder={"price"}
+                placeholder={"Precio"}
               />
             </div>
             <p className={errorObj.price ? "error" : "notError"}>
@@ -152,6 +150,7 @@ export const Uploader = () => {
             display: flex;
             flex-direction: column;
             justify-content: center;
+            margin-top: 1.5rem;
             padding: 1rem;
             background-color: rgb(245, 243, 255);
             border-radius: 1rem;
@@ -176,9 +175,9 @@ export const Uploader = () => {
             width: 14rem;
             border: antiquewhite;
             font-size: 1rem;
-            text-align: center;
             font-family: inherit;
             border-radius: 0.2rem;
+            text-indent: 1rem;
           }
           i {
             position: absolute;

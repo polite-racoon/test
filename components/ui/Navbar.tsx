@@ -45,7 +45,7 @@ export const Navbar = () => {
         <IconButton size="large" edge="start" onClick={openSidemenu}>
           <MenuOutlinedIcon />
         </IconButton>
-        <Box>
+        <Box onClick={() => router.push("/")}>
           <Typography variant="h5">sweet</Typography>
         </Box>
         <Box sx={{ position: "relative" }}>

@@ -45,9 +45,9 @@ const pages: item[] = [
 
 const categories: item[] = [
   {
-    text: "navidad",
-    icon: <AcUnitIcon />,
-    url: "/navidad",
+    text: "bodas y bautizos",
+    icon: <ChurchOutlinedIcon />,
+    url: "/bodas",
   },
   {
     text: "cumpleaños",
@@ -60,9 +60,9 @@ const categories: item[] = [
     url: "/enamorados",
   },
   {
-    text: "bodas",
-    icon: <ChurchOutlinedIcon />,
-    url: "/bodas",
+    text: "navidad",
+    icon: <AcUnitIcon />,
+    url: "/navidad",
   },
 ];
 

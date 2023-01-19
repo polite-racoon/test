@@ -6,9 +6,9 @@ import { getImageNameFromImageUrl } from "../../functions";
 
 export const DeleteList = () => {
   const [items, setItems] = useState([]);
-  const db = firebase.firestore();
 
   useEffect(() => {
+    const db = firebase.firestore();
     const unsubscribe = db.collection("productos").onSnapshot((qs) => {
       const temp = [];
       qs.forEach((doc) => {

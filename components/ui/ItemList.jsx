@@ -5,9 +5,9 @@ import firebase from "../../firebase/client";
 
 export const ItemList = () => {
   const [items, setItems] = useState([]);
-  const db = firebase.firestore();
 
   useEffect(() => {
+    const db = firebase.firestore();
     const temp = [];
     db.collection("productos")
       .get()

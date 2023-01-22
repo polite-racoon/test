@@ -23,10 +23,11 @@ export const ItemList = () => {
 
   return (
     <Grid container spacing={1.3}>
-      {items.map(({ title, price, imageUrl, id }) => {
+      {items.map((item) => {
+        const { id } = item;
         return (
           <Grid item xs={6} md={4} key={id}>
-            <Item title={title} price={price} imageUrl={imageUrl} />
+            <Item data={item} />
           </Grid>
         );
       })}

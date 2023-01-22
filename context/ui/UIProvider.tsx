@@ -1,5 +1,5 @@
-import { FC, ReactNode, useReducer } from 'react';
-import { UIContext, uiReducer } from './';
+import { FC, ReactNode, useReducer } from "react";
+import { UIContext, uiReducer } from "./";
 
 interface Props {
   children: ReactNode;
@@ -21,23 +21,23 @@ export const UIProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(uiReducer, UI_INITIAL_STATE);
 
   const openSidemenu = () => {
-    dispatch({ type: '[UI] - open sidebar' });
+    dispatch({ type: "[UI] - open sidebar" });
   };
 
   const closeSidemenu = () => {
-    dispatch({ type: '[UI] - close sidebar' });
+    dispatch({ type: "[UI] - close sidebar" });
   };
 
   const setIsAddingEntry = (isAdding: boolean) => {
-    dispatch({ type: '[UI] - set isAddingEntry', payload: isAdding });
+    dispatch({ type: "[UI] - set isAddingEntry", payload: isAdding });
   };
 
   const startDragging = () => {
-    dispatch({ type: '[UI] - start dragging' });
+    dispatch({ type: "[UI] - start dragging" });
   };
 
   const endDragging = () => {
-    dispatch({ type: '[UI] - end dragging' });
+    dispatch({ type: "[UI] - end dragging" });
   };
 
   return (

@@ -1,9 +1,11 @@
 import Image from "next/legacy/image";
-import { Box, Button, Card, Typography } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { Box, Card, Typography } from "@mui/material";
 import { Stars } from "./Stars";
+import { MyButton } from "./MyButton";
 
-export const Item = ({ title, imageUrl, price }) => {
+export const Item = ({ data }: any) => {
+  const { title, price, imageUrl } = data;
+
   return (
     <Card
       sx={{ height: "28rem", backgroundColor: "#eee", position: "relative" }}
@@ -23,21 +25,7 @@ export const Item = ({ title, imageUrl, price }) => {
           ${price}
         </Typography>
         <Stars />
-        <Box display="flex" justifyContent="center">
-          <Button
-            variant="contained"
-            disableElevation
-            color="info"
-            size="small"
-            sx={{
-              textTransform: "none",
-            }}
-            endIcon={<AddCircleOutlineIcon />}
-            onClick={() => {}}
-          >
-            Agregar al carrito
-          </Button>
-        </Box>
+        <MyButton data={data} />
       </Box>
     </Card>
   );

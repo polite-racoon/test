@@ -1,8 +1,12 @@
-import Image from "next/legacy/image";
+import { useContext } from "react";
 import { Box, Card, Grid, Typography } from "@mui/material";
 import { Layout } from "../components/layouts";
+import { ReservasContext } from "../context/reservas";
+import { ItemB } from "../components/ui";
 
 const ShoppingCartPage = () => {
+  const { reservas } = useContext(ReservasContext);
+
   return (
     <Layout>
       <Box
@@ -17,22 +21,9 @@ const ShoppingCartPage = () => {
       </Box>
       <Box>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
-            <Card
-              sx={{
-                backgroundColor: "#eee",
-              }}
-            >
-              <Grid container spacing={0}>
-                <Grid item xs={4}>
-                  <Image src="/cookie1.jpg" width={680} height={1020} alt="" />
-                </Grid>
-                <Grid item xs={8}>
-                  <Typography>a</Typography>
-                </Grid>
-              </Grid>
-            </Card>
-          </Grid>
+          {reservas.map((reserva) => {
+            return <ItemB reserva={reserva} />;
+          })}
         </Grid>
       </Box>
     </Layout>

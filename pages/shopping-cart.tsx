@@ -22,7 +22,7 @@ const ShoppingCartPage = () => {
       <Box>
         <Grid container spacing={2}>
           {reservas.map((reserva) => {
-            return <ItemB reserva={reserva} />;
+            return <ItemB key={reserva.id} reserva={reserva} />;
           })}
         </Grid>
       </Box>

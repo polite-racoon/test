@@ -3,6 +3,7 @@ import { Card, Grid, Typography } from "@mui/material";
 
 export const ItemB = ({ reserva }: any) => {
   const { title, price, imageUrl } = reserva;
+  console.log(reserva);
   return (
     <Grid item xs={12} md={6}>
       <Card

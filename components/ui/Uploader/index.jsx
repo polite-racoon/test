@@ -63,7 +63,7 @@ export const Uploader = () => {
             <FormControl fullWidth color="secondary">
               <InputLabel id="tipo">Tipo</InputLabel>
               <Select
-                labelId="tipo"
+                // labelId="tipo"
                 id="selector"
                 value={formData.tipo}
                 name="tipo"

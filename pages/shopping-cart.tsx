@@ -21,8 +21,8 @@ const ShoppingCartPage = () => {
       </Box>
       <Box>
         <Grid container spacing={2}>
-          {reservas.map((reserva) => {
-            return <ItemB key={reserva.id} reserva={reserva} />;
+          {reservas.map((reserva, i) => {
+            return <ItemB key={i} reserva={reserva} />;
           })}
         </Grid>
       </Box>

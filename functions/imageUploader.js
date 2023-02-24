@@ -32,7 +32,7 @@ export const imageUplodaer = (
         db.collection("productos")
           .add(doc)
           .then(() => {
-            setFormData({ title: "", description: "", price: "" });
+            setFormData({ title: "", description: "", price: "", tipo: "" });
             setImage(null);
             setLoading(false);
           })

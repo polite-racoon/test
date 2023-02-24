@@ -3,7 +3,8 @@ import { Reserva } from "../../interfaces";
 
 type ReservasActionType =
   | { type: "[Reservas] - addReserva"; payload: Reserva }
-  | { type: "[Reservas] - deleteReserva"; payload: string };
+  | { type: "[Reservas] - deleteReserva"; payload: string }
+  | { type: "[Reservas] - Load reservas from cookies"; payload: Reserva[] };
 
 export const reservasReducer = (
   state: ReservasState,
@@ -20,11 +21,18 @@ export const reservasReducer = (
       const index = state.reservas.findIndex(
         (reserva) => reserva.id === action.payload
       );
-      state.reservas.splice(index, 1);
+      const newReservas = [...state.reservas];
+      newReservas.splice(index, 1);
       return {
         ...state,
+        reservas: newReservas,
       };
 
+    case "[Reservas] - Load reservas from cookies":
+      return {
+        ...state,
+        reservas: [...action.payload],
+      };
     default:
       return state;
   }

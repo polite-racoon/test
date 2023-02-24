@@ -23,8 +23,6 @@ export const Navbar = () => {
   const { reservas } = useContext(ReservasContext);
   const router = useRouter();
 
-  console.log(reservas);
-
   const onUserIconClick = async () => {
     try {
       const response = await fetch("/api/door", {
@@ -52,44 +50,44 @@ export const Navbar = () => {
           <Typography variant="h5">sweet</Typography>
         </Box>
         <Box sx={{ position: "relative" }}>
-          {router.pathname === "/shopping-cart" ? (
+          {router.pathname !== "/" && (
             <IconButton
               size="large"
               edge="end"
-              sx={{ position: "absolute", left: "-2.5rem" }}
+              sx={{ position: "absolute", left: "-6rem" }}
               onClick={() => router.push("/")}
             >
               <HomeOutlinedIcon />
             </IconButton>
-          ) : (
-            <>
-              <IconButton
-                size="large"
-                edge="end"
-                sx={{ position: "absolute", left: "-2.5rem" }}
-                onClick={() => router.push("/shopping-cart")}
-              >
-                <ShoppingCartOutlinedIcon />
-              </IconButton>
-              {!!reservas.length && (
-                <div
-                  style={{
-                    position: "absolute",
-                    left: "-1rem",
-                    top: "1.4rem",
-                    fontSize: "0.5rem",
-                    backgroundColor: "red",
-                    borderRadius: "100%",
-                    height: "0.7rem",
-                    width: "0.7rem",
-                    textAlign: "center",
-                  }}
-                >
-                  {reservas.length}
-                </div>
-              )}
-            </>
           )}
+
+          <IconButton
+            size="large"
+            edge="end"
+            sx={{ position: "absolute", left: "-3rem" }}
+            onClick={() => router.push("/shopping-cart")}
+          >
+            <ShoppingCartOutlinedIcon />
+          </IconButton>
+          {!!reservas.length && (
+            <div
+              style={{
+                position: "absolute",
+                left: "-1.5rem",
+                top: "1.5rem",
+                fontSize: "0.75rem",
+                backgroundColor: "red",
+                borderRadius: "100%",
+                height: "1rem",
+                width: "1rem",
+                textAlign: "center",
+                color: "white",
+              }}
+            >
+              {reservas.length}
+            </div>
+          )}
+
           {user ? (
             <IconButton size="large" edge="end" onClick={onUserIconClick}>
               <Image

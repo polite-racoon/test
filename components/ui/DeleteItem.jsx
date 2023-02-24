@@ -1,9 +1,11 @@
+import { useState } from "react";
 import Image from "next/legacy/image";
 import { Box, Button, Card, Typography } from "@mui/material";
 import { Stars } from "./Stars";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 export const DeleteItem = ({ title, imageUrl, price, id, onDelete }) => {
+  const [disabled, setDisabled] = useState(false);
   return (
     <Card
       sx={{ height: "28rem", backgroundColor: "#eee", position: "relative" }}
@@ -24,7 +26,8 @@ export const DeleteItem = ({ title, imageUrl, price, id, onDelete }) => {
           size="small"
           sx={{ textTransform: "none", position: "absolute", bottom: "0.5rem" }}
           endIcon={<DeleteIcon />}
-          onClick={() => onDelete(id, imageUrl)}
+          onClick={() => onDelete(id, imageUrl, setDisabled)}
+          disabled={disabled}
         >
           Borrar
         </Button>

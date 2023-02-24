@@ -5,10 +5,10 @@ import firebase from "../../firebase/client";
 import { getImageNameFromImageUrl } from "../../functions";
 
 export const DeleteList = () => {
+  const db = firebase.firestore();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const db = firebase.firestore();
     const unsubscribe = db.collection("productos").onSnapshot((qs) => {
       const temp = [];
       qs.forEach((doc) => {
@@ -23,7 +23,8 @@ export const DeleteList = () => {
     };
   }, []);
 
-  const onDelete = (id, imageUrl) => {
+  const onDelete = (id, imageUrl, setDisabled) => {
+    setDisabled(true);
     const imageName = getImageNameFromImageUrl(imageUrl);
     const desertRef = firebase
       .storage()
@@ -40,6 +41,7 @@ export const DeleteList = () => {
       })
       .catch((error) => {
         console.log(error);
+        setDisabled(false);
       });
   };
 

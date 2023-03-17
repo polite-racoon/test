@@ -27,7 +27,7 @@ export const ItemList = () => {
         const { id } = item;
         return (
           <Grid item xs={6} md={4} key={id}>
-            <Item data={item} />
+            <Item itemData={item} />
           </Grid>
         );
       })}

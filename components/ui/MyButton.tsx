@@ -2,10 +2,12 @@ import { Box, Button } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import { useContext } from "react";
 import { ReservasContext } from "../../context/reservas";
+import { UIContext } from "../../context/ui";
+import { Reserva } from "../../interfaces";
 
-export const MyButton = ({ data }: any) => {
+export const MyButton = ({ itemData }: { itemData: Reserva }) => {
   const { addReserva } = useContext(ReservasContext);
-  const { title, price, imageUrl, id } = data;
+  const { openAddToCartModal } = useContext(UIContext);
 
   return (
     <Box display="flex" justifyContent="center">
@@ -19,7 +21,8 @@ export const MyButton = ({ data }: any) => {
         }}
         endIcon={<AddCircleOutlineIcon />}
         onClick={() => {
-          addReserva({ title, price, imageUrl, id });
+          addReserva(itemData);
+          openAddToCartModal();
         }}
       >
         Agregar al carrito

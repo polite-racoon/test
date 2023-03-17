@@ -1,11 +1,11 @@
 import { UIState } from ".";
+import { Reserva } from "../../interfaces";
 
 type UIActionType =
   | { type: "[UI] - open sidebar" }
   | { type: "[UI] - close sidebar" }
-  | { type: "[UI] - set isAddingEntry"; payload: boolean }
-  | { type: "[UI] - start dragging" }
-  | { type: "[UI] - end dragging" };
+  | { type: "[UI] - open modal" }
+  | { type: "[UI] - close modal" };
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
@@ -21,22 +21,16 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
         sidemenuOpen: false,
       };
 
-    case "[UI] - set isAddingEntry":
+    case "[UI] - open modal":
       return {
         ...state,
-        isAddingEntry: action.payload,
+        addToCartModalOpen: true,
       };
 
-    case "[UI] - start dragging":
+    case "[UI] - close modal":
       return {
         ...state,
-        isDragging: true,
-      };
-
-    case "[UI] - end dragging":
-      return {
-        ...state,
-        isDragging: false,
+        addToCartModalOpen: false,
       };
 
     default:

@@ -6,6 +6,8 @@ import { ItemB } from "../components/ui";
 
 const ShoppingCartPage = () => {
   const { reservas } = useContext(ReservasContext);
+  let total = 0;
+  reservas.forEach((reserva) => (total += Number(reserva.price)));
 
   return (
     <Layout>
@@ -25,6 +27,10 @@ const ShoppingCartPage = () => {
             return <ItemB key={i} reserva={reserva} />;
           })}
         </Grid>
+      </Box>
+      <Box>
+        <Typography>Total</Typography>
+        <Typography>{total}</Typography>
       </Box>
     </Layout>
   );

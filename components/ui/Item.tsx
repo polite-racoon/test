@@ -2,9 +2,10 @@ import Image from "next/legacy/image";
 import { Box, Card, Typography } from "@mui/material";
 import { Stars } from "./Stars";
 import { MyButton } from "./MyButton";
+import { Reserva } from "../../interfaces";
 
-export const Item = ({ data }: any) => {
-  const { title, price, imageUrl } = data;
+export const Item = ({ itemData }: { itemData: Reserva }) => {
+  const { title, price, imageUrl } = itemData;
 
   return (
     <Card
@@ -25,7 +26,7 @@ export const Item = ({ data }: any) => {
           ${price}
         </Typography>
         <Stars />
-        <MyButton data={data} />
+        <MyButton itemData={itemData} />
       </Box>
     </Card>
   );

@@ -1,10 +1,10 @@
 import type { NextPage } from "next";
 import Image from "next/legacy/image";
 import { Box, Typography } from "@mui/material";
-import { Logger } from "../components/ui";
+
 import { useAuth } from "../context/auth";
-import { ItemList } from "../components/ui";
 import { Layout } from "../components/layouts";
+import { Logger, ItemList, AddToCartModal } from "../components/ui";
 
 const Home: NextPage = () => {
   const { user } = useAuth();
@@ -26,6 +26,7 @@ const Home: NextPage = () => {
         </Typography>
       </Box>
       <ItemList />
+      <AddToCartModal />
     </Layout>
   );
 };

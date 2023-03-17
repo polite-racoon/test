@@ -7,14 +7,12 @@ interface Props {
 
 export interface UIState {
   sidemenuOpen: boolean;
-  isAddingEntry: boolean;
-  isDragging: boolean;
+  addToCartModalOpen: boolean;
 }
 
 const UI_INITIAL_STATE: UIState = {
   sidemenuOpen: false,
-  isAddingEntry: false,
-  isDragging: false,
+  addToCartModalOpen: false,
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
@@ -28,16 +26,12 @@ export const UIProvider: FC<Props> = ({ children }) => {
     dispatch({ type: "[UI] - close sidebar" });
   };
 
-  const setIsAddingEntry = (isAdding: boolean) => {
-    dispatch({ type: "[UI] - set isAddingEntry", payload: isAdding });
+  const openAddToCartModal = () => {
+    dispatch({ type: "[UI] - open modal" });
   };
 
-  const startDragging = () => {
-    dispatch({ type: "[UI] - start dragging" });
-  };
-
-  const endDragging = () => {
-    dispatch({ type: "[UI] - end dragging" });
+  const closeAddToCartModal = () => {
+    dispatch({ type: "[UI] - close modal" });
   };
 
   return (
@@ -46,9 +40,8 @@ export const UIProvider: FC<Props> = ({ children }) => {
         ...state,
         openSidemenu,
         closeSidemenu,
-        setIsAddingEntry,
-        startDragging,
-        endDragging,
+        openAddToCartModal,
+        closeAddToCartModal,
       }}
     >
       {children}

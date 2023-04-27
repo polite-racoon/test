@@ -36,15 +36,7 @@ function useProvideAuth() {
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then((response) => handleUser(response.user));
   };
-  /*
-  const signinWithFacebook = () => {
-    setLoading(true);
-    return firebase
-      .auth()
-      .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then((response) => handleUser(response.user));
-  };
-  */
+
   const signout = () => {
     return firebase
       .auth()
@@ -59,16 +51,11 @@ function useProvideAuth() {
     };
   }, []);
 
-  const [misReservas, setMisReservas] = useState(undefined);
-
   return {
     user,
     loading,
     signinWithGoogle,
-    // signinWithFacebook,
     signout,
-    misReservas,
-    setMisReservas,
   };
 }
 

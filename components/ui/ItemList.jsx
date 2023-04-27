@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
-import { Item } from "./Item";
-import firebase from "../../firebase/client";
+import { useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import { Item } from './Item';
+import firebase from '../../firebase/client';
 
 export const ItemList = () => {
   const [items, setItems] = useState([]);
@@ -9,7 +9,7 @@ export const ItemList = () => {
   useEffect(() => {
     const db = firebase.firestore();
     const temp = [];
-    db.collection("productos")
+    db.collection('productos')
       .get()
       .then((qs) => {
         qs.forEach((doc) => {

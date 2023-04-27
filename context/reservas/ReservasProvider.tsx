@@ -1,7 +1,7 @@
-import { FC, ReactNode, useEffect, useReducer } from "react";
-import { ReservasContext, reservasReducer } from "./";
-import { Reserva, ReservasState } from "../../interfaces";
-import Cookies from "js-cookie";
+import { FC, ReactNode, useEffect, useReducer } from 'react';
+import { ReservasContext, reservasReducer } from './';
+import { Reserva, ReservasState } from '../../interfaces';
+import Cookies from 'js-cookie';
 
 interface Props {
   children: ReactNode;
@@ -15,24 +15,24 @@ export const ReservasProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reservasReducer, Reservas_INITIAL_STATE);
 
   useEffect(() => {
-    const cookieReservas = Cookies.get("reservas")
-      ? JSON.parse(Cookies.get("reservas")!)
+    const cookieReservas = Cookies.get('reservas')
+      ? JSON.parse(Cookies.get('reservas')!)
       : [];
     dispatch({
-      type: "[Reservas] - Load reservas from cookies",
+      type: '[Reservas] - Load reservas from cookies',
       payload: cookieReservas,
     });
   }, []);
 
   useEffect(() => {
-    Cookies.set("reservas", JSON.stringify(state.reservas));
+    Cookies.set('reservas', JSON.stringify(state.reservas));
   }, [state.reservas]);
 
   const addReserva = (reserva: Reserva) => {
-    dispatch({ type: "[Reservas] - addReserva", payload: reserva });
+    dispatch({ type: '[Reservas] - addReserva', payload: reserva });
   };
   const deleteReserva = (id: string) => {
-    dispatch({ type: "[Reservas] - deleteReserva", payload: id });
+    dispatch({ type: '[Reservas] - deleteReserva', payload: id });
   };
 
   return (

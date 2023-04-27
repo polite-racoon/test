@@ -1,18 +1,18 @@
-import { useContext } from "react";
-import Image from "next/image";
-import { Box, Card, Grid, Modal, Typography } from "@mui/material";
+import { useContext } from 'react';
+import Image from 'next/image';
+import { Box, Card, Grid, Modal, Typography } from '@mui/material';
 
-import { UIContext } from "../../context/ui";
-import { ReservasContext } from "../../context/reservas";
+import { UIContext } from '../../context/ui';
+import { ReservasContext } from '../../context/reservas';
 
 const style = {
-  position: "absolute" as "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
+  position: 'absolute' as 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
   width: 400,
-  bgcolor: "background.paper",
-  border: "1px solid #000",
+  bgcolor: 'background.paper',
+  border: '1px solid #000',
   boxShadow: 24,
   p: 4,
   // display: "flex",
@@ -44,7 +44,7 @@ export const AddToCartModal = () => {
                 src={itemData?.imageUrl}
                 height={200}
                 width={150}
-                alt={"imagen del producto"}
+                alt={'imagen del producto'}
               />
             </Grid>
             <Grid item xs={4}>

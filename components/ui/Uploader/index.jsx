@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import ImageInput from "./ImageInput";
-import Loading from "./Loading";
-import { isFormValid } from "../../../functions";
-import { imageUplodaer } from "../../../functions";
+import React, { useState } from 'react';
+import ImageInput from './ImageInput';
+import Loading from './Loading';
+import { isFormValid } from '../../../functions';
+import { imageUplodaer } from '../../../functions';
 import {
   Box,
   Button,
@@ -11,15 +11,15 @@ import {
   MenuItem,
   Select,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 export const Uploader = () => {
   const [image, setImage] = useState(null);
   const [formData, setFormData] = useState({
-    title: "",
-    description: "",
-    price: "",
-    tipo: "",
+    title: '',
+    description: '',
+    price: '',
+    tipo: '',
   });
   const [errorObj, setErrorObj] = useState({
     title: false,
@@ -57,7 +57,7 @@ export const Uploader = () => {
 
   return (
     <>
-      <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+      <Box display={'flex'} flexDirection={'column'} alignItems={'center'}>
         <form>
           <div>
             <FormControl fullWidth color="secondary">
@@ -70,13 +70,13 @@ export const Uploader = () => {
                 label="Tipo"
                 onChange={onInputChange}
               >
-                <MenuItem value={"bodas y bautizos"}>bodas y bautizos</MenuItem>
-                <MenuItem value={"cumpleaños"}>cumpleaños</MenuItem>
-                <MenuItem value={"enamorados"}>enamorados</MenuItem>
-                <MenuItem value={"navidad"}>navidad</MenuItem>
+                <MenuItem value={'bodas y bautizos'}>bodas y bautizos</MenuItem>
+                <MenuItem value={'cumpleaños'}>cumpleaños</MenuItem>
+                <MenuItem value={'enamorados'}>enamorados</MenuItem>
+                <MenuItem value={'navidad'}>navidad</MenuItem>
               </Select>
             </FormControl>
-            <p className={errorObj.tipo ? "error" : "notError"}>
+            <p className={errorObj.tipo ? 'error' : 'notError'}>
               tipo required
             </p>
             <br></br>
@@ -87,10 +87,10 @@ export const Uploader = () => {
                 value={formData.title}
                 maxLength={50}
                 onChange={onInputChange}
-                placeholder={"Título"}
+                placeholder={'Título'}
               />
             </div>
-            <p className={errorObj.title ? "error" : "notError"}>
+            <p className={errorObj.title ? 'error' : 'notError'}>
               title required
             </p>
           </div>
@@ -101,7 +101,7 @@ export const Uploader = () => {
                 value={formData.description}
                 maxLength={200}
                 onChange={onInputChange}
-                placeholder={"Descripción"}
+                placeholder={'Descripción'}
                 rows={7}
               />
             </div>
@@ -114,29 +114,29 @@ export const Uploader = () => {
                 name="price"
                 value={formData.price}
                 onChange={onInputChange}
-                placeholder={"Precio"}
+                placeholder={'Precio'}
               />
             </div>
-            <p className={errorObj.price ? "error" : "notError"}>
+            <p className={errorObj.price ? 'error' : 'notError'}>
               price required
             </p>
           </div>
 
           <div>
             <ImageInput onChange={onImageChange} image={image} />
-            <p className={errorObj.image ? "error" : "notError"}>
+            <p className={errorObj.image ? 'error' : 'notError'}>
               image required
             </p>
           </div>
         </form>
-        <Box sx={{ padding: "2rem" }}>
+        <Box sx={{ padding: '2rem' }}>
           {loading ? (
             <Loading />
           ) : (
             <Button
-              variant={"outlined"}
+              variant={'outlined'}
               onClick={formSubmit}
-              color={"secondary"}
+              color={'secondary'}
             >
               enviar
             </Button>

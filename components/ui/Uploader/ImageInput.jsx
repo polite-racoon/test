@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useState, useEffect } from "react";
-import { IconButton } from "@mui/material";
-import { PhotoCamera } from "@mui/icons-material";
+import React, { useState, useEffect } from 'react';
+import { IconButton } from '@mui/material';
+import { PhotoCamera } from '@mui/icons-material';
 
 export default function ImageInput(props) {
-  const [localImageUrl, setLocalImageUrl] = useState("");
+  const [localImageUrl, setLocalImageUrl] = useState('');
 
   // cuando cambia props.image devuelve una url local. Se utilizó useEffect para acceder a window
   useEffect(() => {
@@ -12,13 +12,13 @@ export default function ImageInput(props) {
       const url = window.URL.createObjectURL(props.image);
       setLocalImageUrl(url);
     } else {
-      setLocalImageUrl("");
+      setLocalImageUrl('');
     }
   }, [props.image]);
 
   // determina si el archivo es una imagen
   const isFileImage = (file) => {
-    return file.type.split("/")[0] === "image";
+    return file.type.split('/')[0] === 'image';
   };
 
   // comprime y dimensiona la imagen ingresada y la entrega al componente padre
@@ -28,7 +28,7 @@ export default function ImageInput(props) {
       return;
     }
     if (!isFileImage(image)) {
-      alert("El archivo seleccionado no es una imagen.");
+      alert('El archivo seleccionado no es una imagen.');
       props.onChange(null);
       return;
     }
@@ -40,7 +40,7 @@ export default function ImageInput(props) {
       <div className="main">
         <IconButton aria-label="upload picture" component="label">
           <input hidden accept="image/*" type="file" onChange={handleChange} />
-          <PhotoCamera sx={{ fontSize: "2.5rem", color: "#555" }} />
+          <PhotoCamera sx={{ fontSize: '2.5rem', color: '#555' }} />
         </IconButton>
         {localImageUrl && (
           <img src={localImageUrl} height="200" alt="caja de suculentas" />

@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import Image from "next/legacy/image";
-import { Card, Grid, IconButton, Typography } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
-import { ReservasContext } from "../../context/reservas";
+import { useContext } from 'react';
+import Image from 'next/legacy/image';
+import { Card, Grid, IconButton, Typography } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+import { ReservasContext } from '../../context/reservas';
 
 export const ItemB = ({ reserva }: any) => {
   const { title, price, imageUrl, id } = reserva;
@@ -12,7 +12,7 @@ export const ItemB = ({ reserva }: any) => {
     <Grid item xs={12} md={6}>
       <Card
         sx={{
-          backgroundColor: "#eee",
+          backgroundColor: '#eee',
         }}
       >
         <Grid container spacing={0}>

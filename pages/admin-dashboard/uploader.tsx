@@ -1,6 +1,6 @@
-import type { NextPage } from "next";
-import { Layout } from "../../components/layouts";
-import { Uploader } from "../../components/ui";
+import type { NextPage } from 'next';
+import { Layout } from '../../components/layouts';
+import { Uploader } from '../../components/ui';
 
 const uploader: NextPage = () => {
   return (

@@ -1,9 +1,9 @@
-import { Box, Button } from "@mui/material";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import { useContext } from "react";
-import { ReservasContext } from "../../context/reservas";
-import { UIContext } from "../../context/ui";
-import { Reserva } from "../../interfaces";
+import { Box, Button } from '@mui/material';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import { useContext } from 'react';
+import { ReservasContext } from '../../context/reservas';
+import { UIContext } from '../../context/ui';
+import { Reserva } from '../../interfaces';
 
 export const MyButton = ({ itemData }: { itemData: Reserva }) => {
   const { addReserva } = useContext(ReservasContext);
@@ -17,7 +17,7 @@ export const MyButton = ({ itemData }: { itemData: Reserva }) => {
         color="info"
         size="small"
         sx={{
-          textTransform: "none",
+          textTransform: 'none',
         }}
         endIcon={<AddCircleOutlineIcon />}
         onClick={() => {

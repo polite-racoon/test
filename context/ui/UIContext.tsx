@@ -1,5 +1,5 @@
-import { createContext } from "react";
-import { Reserva } from "../../interfaces";
+import { createContext } from 'react';
+import { Reserva } from '../../interfaces';
 
 interface ContextProps {
   sidemenuOpen: boolean;

@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import { Grid } from "@mui/material";
-import { DeleteItem } from "./DeleteItem";
-import firebase from "../../firebase/client";
-import { getImageNameFromImageUrl } from "../../functions";
+import { useEffect, useState } from 'react';
+import { Grid } from '@mui/material';
+import { DeleteItem } from './DeleteItem';
+import firebase from '../../firebase/client';
+import { getImageNameFromImageUrl } from '../../functions';
 
 export const DeleteList = () => {
   const db = firebase.firestore();
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = db.collection("productos").onSnapshot((qs) => {
+    const unsubscribe = db.collection('productos').onSnapshot((qs) => {
       const temp = [];
       qs.forEach((doc) => {
         const data = doc.data();
@@ -21,7 +21,7 @@ export const DeleteList = () => {
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [db]);
 
   const onDelete = (id, imageUrl, setDisabled) => {
     setDisabled(true);
@@ -34,10 +34,10 @@ export const DeleteList = () => {
     desertRef
       .delete()
       .then(() => {
-        db.collection("productos").doc(id).delete();
+        db.collection('productos').doc(id).delete();
       })
       .then(() => {
-        console.log("document deleted");
+        console.log('document deleted');
       })
       .catch((error) => {
         console.log(error);

@@ -49,17 +49,17 @@ const categories: item[] = [
   {
     text: 'accesorios',
     icon: <FontAwesomeIcon icon={faStarOfLife} />,
-    url: '/bodas',
+    url: '/accesorios',
   },
   {
     text: 'plantas',
     icon: <FontAwesomeIcon icon={faLeaf} />,
-    url: '/bodas',
+    url: '/plantas',
   },
   {
     text: 'galletas',
     icon: <FontAwesomeIcon icon={faStroopwafel} />,
-    url: '/bodas',
+    url: '/galletas',
   },
 ];
 

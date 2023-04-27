@@ -52,7 +52,7 @@ export const Navbar = () => {
           </Typography>
         </Box>
         <Box sx={{ position: 'relative' }}>
-          {router.pathname !== '/' && (
+          {/* {router.pathname !== '/' && (
             <IconButton
               size="large"
               edge="end"
@@ -61,7 +61,7 @@ export const Navbar = () => {
             >
               <HomeOutlinedIcon />
             </IconButton>
-          )}
+          )} */}
 
           <IconButton
             size="large"

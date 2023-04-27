@@ -18,6 +18,7 @@ const Home: NextPage = () => {
           width={680}
           height={454}
           alt="caja con galletas de navidad"
+          priority
         />
       </Box>
       <Box display="flex" justifyContent="center">

@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -34,6 +38,8 @@
     "@types/js-cookie": "^3.0.3",
     "eslint": "^8.39.0",
     "eslint-config-next": "13.3.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
     "prettier": "2.8.8"
   }
 }

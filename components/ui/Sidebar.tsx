@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import Link from "next/link";
+import { useContext } from 'react';
+import Link from 'next/link';
 import {
   Box,
   List,
@@ -10,19 +10,21 @@ import {
   Divider,
   SwipeableDrawer,
   IconButton,
-} from "@mui/material";
-import ArrowBackIosNewOutlinedIcon from "@mui/icons-material/ArrowBackIosNewOutlined";
-import CheckBoxOutlinedIcon from "@mui/icons-material/CheckBoxOutlined";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
-import AcUnitIcon from "@mui/icons-material/AcUnit";
-import CelebrationIcon from "@mui/icons-material/Celebration";
-import LoyaltyIcon from "@mui/icons-material/Loyalty";
-import ChurchOutlinedIcon from "@mui/icons-material/ChurchOutlined";
+} from '@mui/material';
+import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
+import AcUnitIcon from '@mui/icons-material/AcUnit';
+import CelebrationIcon from '@mui/icons-material/Celebration';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
+import ChurchOutlinedIcon from '@mui/icons-material/ChurchOutlined';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLeaf } from '@fortawesome/free-solid-svg-icons';
 
-import { UIContext } from "../../context/ui";
-import { useAuth } from "../../context/auth";
+import { UIContext } from '../../context/ui';
+import { useAuth } from '../../context/auth';
 
 type item = {
   text: string;
@@ -32,46 +34,31 @@ type item = {
 
 const pages: item[] = [
   {
-    text: "inicio",
+    text: 'inicio',
     icon: <HomeOutlinedIcon />,
-    url: "/",
+    url: '/',
   },
   {
-    text: "carrito",
+    text: 'carrito',
     icon: <ShoppingCartOutlinedIcon />,
-    url: "/shopping-cart",
+    url: '/shopping-cart',
   },
 ];
 
 const categories: item[] = [
   {
-    text: "bodas y bautizos",
-    icon: <ChurchOutlinedIcon />,
-    url: "/bodas",
-  },
-  {
-    text: "cumpleaños",
-    icon: <CelebrationIcon />,
-    url: "/cumpleaños",
-  },
-  {
-    text: "enamorados",
-    icon: <LoyaltyIcon />,
-    url: "/enamorados",
-  },
-  {
-    text: "navidad",
-    icon: <AcUnitIcon />,
-    url: "/navidad",
+    text: 'plantas',
+    icon: <FontAwesomeIcon icon={faLeaf} />,
+    url: '/bodas',
   },
 ];
 
 export const Sidebar = () => {
   const { user, signout } = useAuth();
   const { sidemenuOpen, closeSidemenu, openSidemenu } = useContext(UIContext);
-  const iOS =
-    typeof navigator !== "undefined" &&
-    /iPad|iPhone|iPod/.test(navigator.userAgent);
+  // const iOS =
+  //   typeof navigator !== "undefined" &&
+  //   /iPad|iPhone|iPod/.test(navigator.userAgent);
 
   return (
     <SwipeableDrawer
@@ -79,16 +66,16 @@ export const Sidebar = () => {
       open={sidemenuOpen}
       onClose={closeSidemenu}
       onOpen={openSidemenu}
-      disableBackdropTransition={!iOS}
-      disableDiscovery={iOS}
+      // disableBackdropTransition={!iOS}
+      // disableDiscovery={iOS}
     >
       <Box sx={{ width: 250 }}>
-        <Box sx={{ display: "flex", justifyContent: "end" }}>
+        <Box sx={{ display: 'flex', justifyContent: 'end' }}>
           <Box
             sx={{
-              padding: "1rem",
-              display: "flex",
-              justifyContent: "center",
+              padding: '1rem',
+              display: 'flex',
+              justifyContent: 'center',
               flexGrow: 2,
             }}
           >
@@ -115,12 +102,12 @@ export const Sidebar = () => {
           <Link href="/mi-reserva">
             <ListItem
               onClick={closeSidemenu}
-              sx={{ backgroundColor: "rgba(63, 184, 212, 0.2)" }}
+              sx={{ backgroundColor: 'rgba(63, 184, 212, 0.2)' }}
             >
               <ListItemIcon>
                 <CheckBoxOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={"mi reserva"} />
+              <ListItemText primary={'mi reserva'} />
             </ListItem>
           </Link>
           {pages.map((page, index) => {

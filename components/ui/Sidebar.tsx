@@ -11,17 +11,17 @@ import {
   SwipeableDrawer,
   IconButton,
 } from '@mui/material';
+
 import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutlined';
 import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
-import AcUnitIcon from '@mui/icons-material/AcUnit';
-import CelebrationIcon from '@mui/icons-material/Celebration';
-import LoyaltyIcon from '@mui/icons-material/Loyalty';
-import ChurchOutlinedIcon from '@mui/icons-material/ChurchOutlined';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faStarOfLife } from '@fortawesome/free-solid-svg-icons';
 import { faLeaf } from '@fortawesome/free-solid-svg-icons';
+import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 
 import { UIContext } from '../../context/ui';
 import { useAuth } from '../../context/auth';
@@ -47,8 +47,18 @@ const pages: item[] = [
 
 const categories: item[] = [
   {
+    text: 'accesorios',
+    icon: <FontAwesomeIcon icon={faStarOfLife} />,
+    url: '/bodas',
+  },
+  {
     text: 'plantas',
     icon: <FontAwesomeIcon icon={faLeaf} />,
+    url: '/bodas',
+  },
+  {
+    text: 'galletas',
+    icon: <FontAwesomeIcon icon={faStroopwafel} />,
     url: '/bodas',
   },
 ];

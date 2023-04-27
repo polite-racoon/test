@@ -109,7 +109,7 @@ export const Sidebar = () => {
           <br />
           <Divider />
           <br />
-          <Link href="/mi-reserva">
+          <Link href="/mis-compras">
             <ListItem
               onClick={closeSidemenu}
               sx={{ backgroundColor: 'rgba(63, 184, 212, 0.2)' }}
@@ -117,7 +117,7 @@ export const Sidebar = () => {
               <ListItemIcon>
                 <CheckBoxOutlinedIcon />
               </ListItemIcon>
-              <ListItemText primary={'mi reserva'} />
+              <ListItemText primary={'mis compras'} />
             </ListItem>
           </Link>
           {pages.map((page, index) => {

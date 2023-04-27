@@ -10,4 +10,4 @@ export * from './DeleteList';
 export * from './DeleteItem';
 export * from './ItemB';
 export * from './AddToCartModal';
-export * from './MyCarousel';
+export * from './CarouselFade';

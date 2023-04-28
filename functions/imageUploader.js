@@ -25,7 +25,9 @@ export const imageUplodaer = (
       task.snapshot.ref.getDownloadURL().then(function (downloadURL) {
         const doc = {
           ...formData,
+          price: Number(formData.price),
           imageUrl: downloadURL,
+          sold: false,
           date: Date.now(),
         };
 

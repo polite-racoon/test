@@ -10,23 +10,24 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  Typography,
 } from '@mui/material';
 
 export const Uploader = () => {
   const [image, setImage] = useState(null);
+
   const [formData, setFormData] = useState({
+    category: '',
     title: '',
     description: '',
     price: '',
-    tipo: '',
   });
+
   const [errorObj, setErrorObj] = useState({
+    category: false,
     title: false,
     description: false,
     price: false,
     image: false,
-    tipo: false,
   });
   const [loading, setLoading] = useState(false);
 
@@ -61,23 +62,22 @@ export const Uploader = () => {
         <form>
           <div>
             <FormControl fullWidth color="secondary">
-              <InputLabel id="tipo">Tipo</InputLabel>
+              <InputLabel id="category">Categoría</InputLabel>
               <Select
-                // labelId="tipo"
+                // labelId="category"
                 id="selector"
-                value={formData.tipo}
-                name="tipo"
-                label="Tipo"
+                value={formData.category}
+                name="category"
+                label="Categoría"
                 onChange={onInputChange}
               >
-                <MenuItem value={'bodas y bautizos'}>bodas y bautizos</MenuItem>
-                <MenuItem value={'cumpleaños'}>cumpleaños</MenuItem>
-                <MenuItem value={'enamorados'}>enamorados</MenuItem>
-                <MenuItem value={'navidad'}>navidad</MenuItem>
+                <MenuItem value={'accesorios'}>accesorios</MenuItem>
+                <MenuItem value={'plantas'}>plantas</MenuItem>
+                <MenuItem value={'galletas'}>galletas</MenuItem>
               </Select>
             </FormControl>
-            <p className={errorObj.tipo ? 'error' : 'notError'}>
-              tipo required
+            <p className={errorObj.category ? 'error' : 'notError'}>
+              category required
             </p>
             <br></br>
             <div className="inputDiv">
@@ -105,7 +105,9 @@ export const Uploader = () => {
                 rows={7}
               />
             </div>
-            <p className="notError">field not required</p>
+            <p className={errorObj.category ? 'error' : 'notError'}>
+              description required
+            </p>
           </div>
           <div>
             <div className="inputDiv">
@@ -134,8 +136,8 @@ export const Uploader = () => {
             <Loading />
           ) : (
             <Button
-              variant={'outlined'}
               onClick={formSubmit}
+              variant={'outlined'}
               color={'secondary'}
             >
               enviar

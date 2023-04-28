@@ -1,12 +1,16 @@
 export const isFormValid = (formData, image, setErrorObj) => {
   const errors = {};
 
-  if (!formData.tipo) {
-    errors.tipo = true;
+  if (!formData.category) {
+    errors.category = true;
   }
 
   if (!formData.title) {
     errors.title = true;
+  }
+
+  if (!formData.description) {
+    errors.description = true;
   }
 
   if (!formData.price) {

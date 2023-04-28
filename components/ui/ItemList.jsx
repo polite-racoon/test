@@ -21,6 +21,8 @@ export const ItemList = () => {
       });
   }, []);
 
+  console.log(items);
+
   return (
     <Grid container spacing={1.3}>
       {items.map((item) => {

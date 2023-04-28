@@ -32,6 +32,11 @@ export default function ImageInput(props) {
       props.onChange(null);
       return;
     }
+    if (image.name.includes(' ')) {
+      alert('El nombre del archivo no debe incluir espacios');
+      props.onChange(null);
+      return;
+    }
     props.onChange(image);
   };
 
@@ -43,7 +48,7 @@ export default function ImageInput(props) {
           <PhotoCamera sx={{ fontSize: '2.5rem', color: '#555' }} />
         </IconButton>
         {localImageUrl && (
-          <img src={localImageUrl} height="200" alt="caja de suculentas" />
+          <img src={localImageUrl} height="200" alt="producto" />
         )}
         {props.image && (
           <p className="imageName">Imagen seleccionada: {props.image.name}</p>

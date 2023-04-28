@@ -10,7 +10,9 @@ export const imageUplodaer = (
   setLoading(true);
   const db = firebase.firestore();
   // sube imagen a firebase storage y devuelve url
-  const storageRef = firebase.storage().ref(`/fotosDeProductos/${image.name}`);
+  const storageRef = firebase
+    .storage()
+    .ref(`/fotosDeProductos/${Date.now() + image.name}`);
   const task = storageRef.put(image);
   task.on(
     'state_changed',

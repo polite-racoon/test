@@ -66,7 +66,7 @@ export const Uploader = () => {
               <Select
                 // labelId="category"
                 id="selector"
-                value={formData.category}
+                value={formData.category || ''}
                 name="category"
                 label="Categoría"
                 onChange={onInputChange}

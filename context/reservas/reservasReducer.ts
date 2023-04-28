@@ -1,10 +1,10 @@
 import { ReservasState } from '../../interfaces';
-import { Reserva } from '../../interfaces';
+import { Producto } from '../../interfaces';
 
 type ReservasActionType =
-  | { type: '[Reservas] - addReserva'; payload: Reserva }
+  | { type: '[Reservas] - addReserva'; payload: Producto }
   | { type: '[Reservas] - deleteReserva'; payload: string }
-  | { type: '[Reservas] - Load reservas from cookies'; payload: Reserva[] };
+  | { type: '[Reservas] - Load reservas from cookies'; payload: Producto[] };
 
 export const reservasReducer = (
   state: ReservasState,

@@ -1,5 +1,4 @@
 import { UIState } from '.';
-import { Reserva } from '../../interfaces';
 
 type UIActionType =
   | { type: '[UI] - open sidebar' }

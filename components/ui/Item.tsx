@@ -2,9 +2,9 @@ import Image from 'next/legacy/image';
 import { Box, Card, Typography } from '@mui/material';
 import { Stars } from './Stars';
 import { MyButton } from './MyButton';
-import { Reserva } from '../../interfaces';
+import { Producto } from '../../interfaces';
 
-export const Item = ({ itemData }: { itemData: Reserva }) => {
+export const Item = ({ itemData }: { itemData: Producto }) => {
   const { title, price, imageUrl } = itemData;
 
   return (

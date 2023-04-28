@@ -1,6 +1,6 @@
 export interface Producto {
   id: string;
-  catergory: 'plantas' | 'accesorios' | 'galletas';
+  catergory: '' | 'plantas' | 'accesorios' | 'galletas';
   title: string;
   description: string;
   price: number;

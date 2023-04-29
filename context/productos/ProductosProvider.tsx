@@ -32,6 +32,7 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
           const id = doc.id;
           temp.push({ ...data, id });
         });
+        temp.sort((a: Producto, b: Producto) => b.date - a.date);
         dispatch({ type: '[Productos] - loadProductos', payload: temp });
       });
 

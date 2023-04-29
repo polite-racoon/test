@@ -6,11 +6,8 @@ import { ProductosContext } from '../../context/productos';
 
 export const CarouselFade = () => {
   const { productos } = useContext(ProductosContext);
-  const productsCopy = [...productos];
-  const productsOrderedByDateDesc = productsCopy.sort(
-    (a, b) => b.date - a.date
-  );
-  const lastProducts = productsOrderedByDateDesc.slice(0, 3);
+
+  const lastProducts = productos.slice(0, 3);
   return (
     <Carousel fade>
       {lastProducts.map((product, i) => {
@@ -18,7 +15,7 @@ export const CarouselFade = () => {
           <Carousel.Item key={product.id}>
             <Image
               className="d-block w-100"
-              src={product.imageUrl}
+              src={product.landscapeImgUrl}
               alt={product.title}
               width={600}
               height={400}

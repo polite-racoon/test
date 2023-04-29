@@ -5,6 +5,7 @@ export interface Producto {
   description: string;
   price: number;
   imageUrl: string;
+  landscapeImgUrl?: string;
   sold: boolean;
   date: number;
 }

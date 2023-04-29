@@ -14,6 +14,7 @@ import {
 
 export const Uploader = () => {
   const [image, setImage] = useState(null);
+  const [landscapeImg, setLandscapeImg] = useState(null);
 
   const [formData, setFormData] = useState({
     category: '',
@@ -49,11 +50,23 @@ export const Uploader = () => {
     setErrorObj(newErrorObj);
   };
 
+  const onLandscapeImgChange = (img) => {
+    setLandscapeImg(img);
+  };
+
   const formSubmit = () => {
     if (!isFormValid(formData, image, setErrorObj)) {
       return;
     }
-    imageUplodaer(image, formData, setLoading, setImage, setFormData);
+    imageUplodaer(
+      image,
+      landscapeImg,
+      formData,
+      setLoading,
+      setImage,
+      setLandscapeImg,
+      setFormData
+    );
   };
 
   return (
@@ -129,6 +142,9 @@ export const Uploader = () => {
             <p className={errorObj.image ? 'error' : 'notError'}>
               image required
             </p>
+          </div>
+          <div>
+            <ImageInput onChange={onLandscapeImgChange} image={landscapeImg} />
           </div>
         </form>
         <Box sx={{ padding: '2rem' }}>

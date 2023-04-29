@@ -12,8 +12,6 @@ export const imageUplodaer = (
   setLoading(true);
   const db = firebase.firestore();
 
-  let landscapeImgUrl = '';
-  // sube landscapeImg a firebase storage y devuelve url
   if (landscapeImg) {
     console.log('landscape');
     const storageRef = firebase
@@ -32,14 +30,44 @@ export const imageUplodaer = (
         setLoading(false);
       },
       () => {
-        task.snapshot.ref.getDownloadURL().then((downloadURL) => {
-          landscapeImgUrl = downloadURL;
+        task.snapshot.ref.getDownloadURL().then((landscapeURL) => {
+          upload(
+            db,
+            image,
+            formData,
+            setLoading,
+            setImage,
+            setLandscapeImage,
+            setFormData,
+            landscapeURL
+          );
         });
       }
     );
+  } else {
+    upload(
+      db,
+      image,
+      formData,
+      setLoading,
+      setImage,
+      setLandscapeImage,
+      setFormData,
+      ''
+    );
   }
-  console.log('landsacape: ' + landscapeImgUrl);
+};
 
+const upload = (
+  db,
+  image,
+  formData,
+  setLoading,
+  setImage,
+  setLandscapeImage,
+  setFormData,
+  landscapeURL
+) => {
   // sube imagen a firebase storage y devuelve url
   const storageRef = firebase
     .storage()
@@ -62,7 +90,7 @@ export const imageUplodaer = (
           ...formData,
           price: Number(formData.price),
           imageUrl: downloadURL,
-          landscapeImgUrl,
+          landscapeImgUrl: landscapeURL,
           sold: false,
           date: Date.now(),
         };

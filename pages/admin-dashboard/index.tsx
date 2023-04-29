@@ -2,8 +2,8 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { Box, IconButton, Typography } from '@mui/material';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Layout } from '../../components/layouts';
+import { DeleteList } from '../../components/ui';
 
 const AdminDashboard: NextPage = () => {
   const router = useRouter();
@@ -16,9 +16,8 @@ const AdminDashboard: NextPage = () => {
         <IconButton onClick={() => router.push('/admin-dashboard/uploader')}>
           <CameraAltIcon sx={{ fontSize: '2.5rem' }} />
         </IconButton>
-        <IconButton onClick={() => router.push('/admin-dashboard/delete')}>
-          <DeleteIcon sx={{ fontSize: '2.5rem' }} />
-        </IconButton>
+        <br />
+        <DeleteList />
       </Box>
     </Layout>
   );

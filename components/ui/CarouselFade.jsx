@@ -6,8 +6,8 @@ import { ProductosContext } from '../../context/productos';
 
 export const CarouselFade = () => {
   const { productos } = useContext(ProductosContext);
-
   const lastProducts = productos.slice(0, 3);
+
   return (
     <Carousel fade>
       {lastProducts.map((product, i) => {

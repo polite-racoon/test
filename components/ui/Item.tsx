@@ -4,14 +4,26 @@ import { Stars } from './Stars';
 import { MyButton } from './MyButton';
 import { Producto } from '../../interfaces';
 
-export const Item = ({ itemData }: { itemData: Producto }) => {
+export const Item = ({
+  itemData,
+  index,
+}: {
+  itemData: Producto;
+  index: number;
+}) => {
   const { title, price, imageUrl } = itemData;
 
   return (
     <Card
       sx={{ height: '28rem', backgroundColor: '#eee', position: 'relative' }}
     >
-      <Image src={imageUrl} width={680} height={1020} alt="" />
+      <Image
+        src={imageUrl}
+        width={680}
+        height={1020}
+        alt=""
+        priority={index < 2}
+      />
       <Box sx={{ padding: '0.5rem' }}>
         <Typography variant="subtitle2">{title}</Typography>
       </Box>

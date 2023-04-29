@@ -1,35 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Grid } from '@mui/material';
 import { Item } from './Item';
-import firebase from '../../firebase/client';
+import { ProductosContext } from '../../context/productos';
 
 export const ItemList = () => {
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    const db = firebase.firestore();
-    const temp = [];
-    db.collection('productos')
-      .get()
-      .then((qs) => {
-        qs.forEach((doc) => {
-          const data = doc.data();
-          const id = doc.id;
-          temp.push({ ...data, id });
-        });
-        setItems(temp);
-      });
-  }, []);
-
-  console.log(items);
+  const { productos } = useContext(ProductosContext);
+  console.log(productos);
 
   return (
     <Grid container spacing={1.3}>
-      {items.map((item) => {
-        const { id } = item;
+      {productos.map((producto) => {
+        const { id } = producto;
         return (
           <Grid item xs={6} md={4} key={id}>
-            <Item itemData={item} />
+            <Item itemData={producto} />
           </Grid>
         );
       })}

@@ -1,5 +1,5 @@
 export interface Producto {
-  id: 'accesorios' | 'plantas' | 'galletas';
+  id: string;
   catergory: string;
   title: string;
   description: string;

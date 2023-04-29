@@ -1,74 +1,35 @@
-import Carousel from 'react-bootstrap/Carousel';
+import { useContext } from 'react';
 import Image from 'next/legacy/image';
+import Carousel from 'react-bootstrap/Carousel';
+
+import { ProductosContext } from '../../context/productos';
 
 export const CarouselFade = () => {
+  const { productos } = useContext(ProductosContext);
+  const productsCopy = [...productos];
+  const productsOrderedByDateDesc = productsCopy.sort(
+    (a, b) => b.date - a.date
+  );
+  const lastProducts = productsOrderedByDateDesc.slice(0, 3);
   return (
     <Carousel fade>
-      <Carousel.Item>
-        <Image
-          className="d-block w-100"
-          src="http://placekitten.com/600/400"
-          alt="First slide"
-          width={600}
-          height={400}
-          priority
-        />
-        <Carousel.Caption>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Image
-          className="d-block w-100"
-          src="http://placekitten.com/602/400"
-          alt="Second slide"
-          width={600}
-          height={400}
-        />
-
-        <Carousel.Caption>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <Image
-          className="d-block w-100"
-          src="http://placekitten.com/601/400"
-          alt="Third slide"
-          width={600}
-          height={400}
-        />
-
-        <Carousel.Caption>
-          <p>
-            Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-          </p>
-        </Carousel.Caption>
-      </Carousel.Item>
+      {lastProducts.map((product, i) => {
+        return (
+          <Carousel.Item key={product.id}>
+            <Image
+              className="d-block w-100"
+              src={product.imageUrl}
+              alt={product.title}
+              width={600}
+              height={400}
+              priority={i === 0}
+            />
+            <Carousel.Caption>
+              <p>{product.description}</p>
+            </Carousel.Caption>
+          </Carousel.Item>
+        );
+      })}
     </Carousel>
   );
 };
-
-// import Carousel from 'react-material-ui-carousel';
-// import { CarouselItem } from './CarouselItem';
-
-// export const MyCarousel = (props) => {
-//   const items = [
-//     {
-//       name: 'Random Name #1',
-//       description: 'Probably the most random thing you have ever seen!',
-//     },
-//     {
-//       name: 'Random Name #2',
-//       description: 'Hello World!',
-//     },
-//   ];
-
-//   return (
-//     <Carousel>
-//       {items.map((item, i) => (
-//         <CarouselItem key={i} item={item} />
-//       ))}
-//     </Carousel>
-//   );
-// };

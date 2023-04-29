@@ -33,15 +33,19 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
           temp.push({ ...data, id });
         });
         console.log(temp);
-        temp.sort((a: Producto, b: Producto) => b.date - a.date);
         dispatch({ type: '[Productos] - loadProductos', payload: temp });
       });
 
     return () => {};
   }, []);
 
+  const productsByIdObj = state.productos.reduce(
+    (acc, el) => ({ ...acc, [el.id]: el }),
+    {}
+  );
+
   return (
-    <ProductosContext.Provider value={{ ...state }}>
+    <ProductosContext.Provider value={{ ...state, ...productsByIdObj }}>
       {children}
     </ProductosContext.Provider>
   );

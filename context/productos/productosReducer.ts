@@ -11,8 +11,11 @@ export const productosReducer = (
 ): ProductosState => {
   switch (action.type) {
     case '[Productos] - loadProductos':
+      const productos = [...action.payload];
+      productos.sort((a: Producto, b: Producto) => b.date - a.date);
+
       return {
-        productos: action.payload,
+        productos,
       };
 
     default:

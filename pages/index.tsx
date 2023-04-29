@@ -33,16 +33,3 @@ const Home: NextPage = () => {
 };
 
 export default Home;
-
-/* <Typography
-  variant={'h5'}
-  sx={{
-    color: 'white',
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-  }}
->
-  -COMPRAR-
-</Typography>; */

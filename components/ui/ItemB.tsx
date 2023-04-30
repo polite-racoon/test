@@ -10,11 +10,7 @@ export const ItemB = ({ reserva }: any) => {
 
   return (
     <Grid item xs={12} md={6}>
-      <Card
-        sx={{
-          backgroundColor: '#eee',
-        }}
-      >
+      <Card>
         <Grid container spacing={0}>
           <Grid item xs={4}>
             <Image src={imageUrl} width={680} height={1020} alt="" />

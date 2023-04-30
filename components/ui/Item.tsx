@@ -14,9 +14,7 @@ export const Item = ({
   const { title, price, imageUrl } = itemData;
 
   return (
-    <Card
-      sx={{ height: '28rem', backgroundColor: '#eee', position: 'relative' }}
-    >
+    <Card sx={{ height: '28rem', position: 'relative' }}>
       <Image
         src={imageUrl}
         width={680}
@@ -37,7 +35,7 @@ export const Item = ({
         <Typography variant="h6" sx={{ color: 'gray' }}>
           ${price}
         </Typography>
-        <Stars />
+        {/* <Stars /> */}
         <MyButton itemData={itemData} />
       </Box>
     </Card>

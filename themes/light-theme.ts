@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material';
+import { orange } from '@mui/material/colors';
 export const lightTheme = createTheme({
   palette: {
     mode: 'light',
@@ -15,7 +16,10 @@ export const lightTheme = createTheme({
       main: '#A55EB9 ',
     },
     warning: {
-      main: '#9500ae',
+      main: '#ffea00',
+    },
+    success: {
+      main: orange[900],
     },
   },
 

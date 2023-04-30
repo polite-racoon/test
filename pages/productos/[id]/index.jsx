@@ -18,7 +18,12 @@ export default function ProductPage() {
 
   return (
     <Layout>
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+        }}
+      >
         <Card style={{ width: '100%' }}>
           <Card.Img variant="top" src={imageUrl} />
           <Card.Body>

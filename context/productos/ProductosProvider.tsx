@@ -32,7 +32,6 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
           const id = doc.id;
           temp.push({ ...data, id });
         });
-        console.log(temp);
         dispatch({ type: '[Productos] - loadProductos', payload: temp });
       });
 

@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Image from 'next/legacy/image';
 import {
   AppBar,
+  Avatar,
   Box,
   Divider,
   IconButton,
@@ -46,27 +47,27 @@ export const Navbar = () => {
         <IconButton size="large" edge="start" onClick={openSidemenu}>
           <MenuOutlinedIcon />
         </IconButton>
+        {router.pathname !== '/' && (
+          <IconButton
+            size="large"
+            sx={{ position: 'absolute', left: '2.5rem' }}
+            onClick={() => router.push('/')}
+          >
+            <HomeOutlinedIcon />
+          </IconButton>
+        )}
         <Box onClick={() => router.push('/')}>
           <Typography variant="h4" fontFamily={'Sacramento'}>
             tiendita nomada
           </Typography>
         </Box>
         <Box sx={{ position: 'relative' }}>
-          {/* {router.pathname !== '/' && (
-            <IconButton
-              size="large"
-              edge="end"
-              sx={{ position: 'absolute', left: '-6rem' }}
-              onClick={() => router.push('/')}
-            >
-              <HomeOutlinedIcon />
-            </IconButton>
-          )} */}
-
           <IconButton
             size="large"
-            edge="end"
-            sx={{ position: 'absolute', left: '-3rem' }}
+            sx={{
+              position: 'absolute',
+              left: '-2.5rem',
+            }}
             onClick={() => router.push('/shopping-cart')}
           >
             <ShoppingCartOutlinedIcon />
@@ -75,7 +76,7 @@ export const Navbar = () => {
             <div
               style={{
                 position: 'absolute',
-                left: '-1.5rem',
+                left: '-1rem',
                 top: '1.5rem',
                 fontSize: '0.75rem',
                 backgroundColor: 'red',
@@ -91,14 +92,26 @@ export const Navbar = () => {
           )}
 
           {user ? (
+            // <IconButton size="large" edge="end" onClick={onUserIconClick}>
+            //   <Image
+            //     src={user.photoUrl}
+            //     height={24}
+            //     width={24}
+            //     alt="user image"
+            //     className="userImage"
+            //   />
+            // </IconButton>
             <IconButton size="large" edge="end" onClick={onUserIconClick}>
-              <Image
-                src={user.photoUrl}
-                height={24}
-                width={24}
-                alt="user image"
-                className="userImage"
-              />
+              <Avatar
+                sx={{
+                  bgcolor: '#ba68c8',
+                  height: '1.5rem',
+                  width: '1.5rem',
+                  fontSize: '1rem',
+                }}
+              >
+                {user.name[0]}
+              </Avatar>
             </IconButton>
           ) : (
             <IconButton size="large" edge="end">

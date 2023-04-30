@@ -1,7 +1,7 @@
 import Image from 'next/legacy/image';
 import { Box, Card, Typography } from '@mui/material';
 import { Stars } from './Stars';
-import { MyButton } from './MyButton';
+import { AddButton } from './AddButton';
 import { Producto } from '../../interfaces';
 
 export const Item = ({
@@ -36,7 +36,7 @@ export const Item = ({
           ${price}
         </Typography>
         {/* <Stars /> */}
-        <MyButton itemData={itemData} />
+        <AddButton itemData={itemData} openModal />
       </Box>
     </Card>
   );

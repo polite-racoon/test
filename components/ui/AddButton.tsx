@@ -1,13 +1,24 @@
-import { Button } from '@mui/material';
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
+import { Button } from '@mui/material';
+import { ShoppingCartOutlined } from '@mui/icons-material';
+
 import { ReservasContext } from '../../context/reservas';
 import { UIContext } from '../../context/ui';
 import { Producto } from '../../interfaces';
-import { ShoppingCartOutlined } from '@mui/icons-material';
 
-export const MyButton = ({ itemData }: { itemData: Producto }) => {
+export const AddButton = ({
+  itemData,
+  openModal,
+  goToCart,
+}: {
+  itemData: Producto;
+  openModal?: boolean;
+  goToCart?: boolean;
+}) => {
   const { addReserva } = useContext(ReservasContext);
   const { openAddToCartModal } = useContext(UIContext);
+  const router = useRouter();
 
   return (
     <Button
@@ -23,7 +34,8 @@ export const MyButton = ({ itemData }: { itemData: Producto }) => {
       onClick={(e) => {
         e.preventDefault();
         addReserva(itemData);
-        openAddToCartModal();
+        if (openModal) openAddToCartModal();
+        if (goToCart) router.push('/shopping-cart');
       }}
     >
       Agregar

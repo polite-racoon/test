@@ -7,22 +7,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 export const DeleteItem = ({ title, imageUrl, price, id, onDelete }) => {
   const [disabled, setDisabled] = useState(false);
   return (
-    <Card
-      sx={{ height: '28rem', backgroundColor: '#eee', position: 'relative' }}
-    >
+    <Card sx={{ height: '28rem', position: 'relative' }}>
       <Image src={imageUrl} width={680} height={1020} alt="" />
       <Box sx={{ padding: '0.5rem' }}>
         <Typography variant="subtitle2">{title}</Typography>
         <Typography variant="h6" sx={{ color: 'gray' }}>
           ${price}
         </Typography>
-        <Stars />
+        {/* <Stars /> */}
       </Box>
       <Box display="flex" justifyContent="center">
         <Button
           variant="outlined"
           disableElevation
-          color="warning"
+          color="info"
           size="small"
           sx={{ textTransform: 'none', position: 'absolute', bottom: '0.5rem' }}
           endIcon={<DeleteIcon />}

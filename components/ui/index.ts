@@ -11,3 +11,5 @@ export * from './DeleteItem';
 export * from './ItemB';
 export * from './AddToCartModal';
 export * from './CarouselFade';
+export * from './Svg';
+export * from './AddButton';

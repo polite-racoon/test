@@ -16,7 +16,13 @@ export const Layout: FC<Props> = ({ title = 'Sweet', children }) => {
       </Head>
       <Navbar />
       <Sidebar />
-      <Box sx={{ padding: '0.6rem', backgroundColor: '#f0f0ff' }}>
+      <Box
+        sx={{
+          padding: '0.6rem',
+          backgroundColor: '#f0f0ff',
+          minHeight: '90vh',
+        }}
+      >
         {children}
         <br></br>
         <br></br>

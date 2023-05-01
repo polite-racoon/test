@@ -55,7 +55,7 @@ export const AddToCartModal = () => {
             </Grid>
             <Grid item xs={6} sx={{ p: 1 }}>
               <Typography>{itemData?.title}</Typography>
-              <Typography>${itemData.price}</Typography>
+              <Typography>${itemData?.price}</Typography>
             </Grid>
           </Grid>
         </Card>

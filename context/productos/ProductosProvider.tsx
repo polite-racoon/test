@@ -43,8 +43,15 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
     {}
   );
 
+  const productsByCategoryObj = state.productos.reduce(
+    (acc, el) => ({ ...acc, [el.category]: el }),
+    {}
+  );
+
   return (
-    <ProductosContext.Provider value={{ ...state, ...productsByIdObj }}>
+    <ProductosContext.Provider
+      value={{ ...state, ...productsByIdObj, ...productsByCategoryObj }}
+    >
       {children}
     </ProductosContext.Provider>
   );

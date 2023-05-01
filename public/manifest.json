@@ -1,7 +1,7 @@
 {
-  "name": "Leivas App",
-  "short_name": "Leivas",
-  "theme_color": "rgb(229 231 235)",
+  "name": "tiendita nomada",
+  "short_name": "nomada",
+  "theme_color": "#f0f0ff",
   "background_color": "white",
   "display": "standalone",
   "orientation": "portrait",

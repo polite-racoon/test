@@ -17,6 +17,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel="icon" href="logo.svg"></link>
           <link rel="preconnect" href="https://fonts.googleapis.com"></link>
           <link
             rel="preconnect"

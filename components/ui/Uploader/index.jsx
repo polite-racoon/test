@@ -19,6 +19,7 @@ export const Uploader = () => {
   const [formData, setFormData] = useState({
     category: '',
     title: '',
+    subtitle: '',
     description: '',
     price: '',
   });
@@ -26,6 +27,7 @@ export const Uploader = () => {
   const [errorObj, setErrorObj] = useState({
     category: false,
     title: false,
+    subtitle: false,
     description: false,
     price: false,
     image: false,
@@ -93,6 +95,8 @@ export const Uploader = () => {
               category required
             </p>
             <br></br>
+          </div>
+          <div>
             <div className="inputDiv">
               <input
                 type="text"
@@ -106,6 +110,19 @@ export const Uploader = () => {
             <p className={errorObj.title ? 'error' : 'notError'}>
               title required
             </p>
+          </div>
+          <div>
+            <div className="inputDiv">
+              <input
+                type="text"
+                name="subtitle"
+                value={formData.subtitle}
+                maxLength={50}
+                onChange={onInputChange}
+                placeholder={'Subtítulo (opcional)'}
+              />
+            </div>
+            <p className={'notError'}>optional</p>
           </div>
           <div>
             <div className="inputDiv">
@@ -138,12 +155,14 @@ export const Uploader = () => {
           </div>
 
           <div>
+            <p>Foto vertical</p>
             <ImageInput onChange={onImageChange} image={image} />
             <p className={errorObj.image ? 'error' : 'notError'}>
               image required
             </p>
           </div>
           <div>
+            <p>Foto horizontal</p>
             <ImageInput onChange={onLandscapeImgChange} image={landscapeImg} />
           </div>
         </form>
@@ -168,14 +187,14 @@ export const Uploader = () => {
             display: flex;
             flex-direction: column;
             justify-content: center;
-            margin-top: 1.5rem;
-            padding: 1rem;
-            background-color: rgb(245, 243, 255);
+            margin-top: 0.5rem;
+            padding: 2rem;
+            background-color: #ddddff;
             border-radius: 1rem;
             min-height: 63vh;
           }
           form > div {
-            margin: 1rem;
+            margin: 0.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;

@@ -53,7 +53,7 @@ export default function ProductPage() {
 
   return (
     <Layout>
-      <Card sx={{ maxWidth: 345 }}>
+      <Card>
         <CardHeader
           avatar={<Svg width={48} height={48} src="/logo.svg" />}
           title={title}

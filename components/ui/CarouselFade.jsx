@@ -22,7 +22,7 @@ export const CarouselFade = () => {
               priority={i === 0}
             />
             <Carousel.Caption>
-              <p>{product.description}</p>
+              <p>{product.subtitle}</p>
             </Carousel.Caption>
           </Carousel.Item>
         );

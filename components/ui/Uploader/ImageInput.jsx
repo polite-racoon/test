@@ -60,22 +60,7 @@ export default function ImageInput(props) {
           flex-direction: column;
           align-items: center;
         }
-        .imageSelectButton {
-          background-color: rgb(196, 181, 253);
-          border: 1px solid rgb(167, 139, 250);
-          color: rgb(55, 65, 81);
-          padding: 0.5rem 1rem;
-          border-radius: 0.3rem;
-        }
-        .imageSelectButton:hover {
-          background-color: rgb(167, 139, 250);
-          border: 1px solid rgb(139, 92, 246);
-          color: rgb(15, 16, 19);
-          outline: none;
-        }
-        .imageSelectButton:focus {
-          background-color: rgb(175, 100, 175);
-        }
+
         img {
           margin-top: 1rem;
         }

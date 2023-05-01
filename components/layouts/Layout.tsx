@@ -8,7 +8,7 @@ interface Props {
   children: any;
 }
 
-export const Layout: FC<Props> = ({ title = 'Sweet', children }) => {
+export const Layout: FC<Props> = ({ title = 'tiendita nomada', children }) => {
   return (
     <Box>
       <Head>
@@ -21,6 +21,9 @@ export const Layout: FC<Props> = ({ title = 'Sweet', children }) => {
           padding: '0.6rem',
           backgroundColor: '#f0f0ff',
           minHeight: '90vh',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
         }}
       >
         {children}

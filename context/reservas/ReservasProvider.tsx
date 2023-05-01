@@ -35,8 +35,23 @@ export const ReservasProvider: FC<Props> = ({ children }) => {
     dispatch({ type: '[Reservas] - deleteReserva', payload: id });
   };
 
+  const idsInReservas = state.reservas.reduce(
+    (acc, el): any => [...acc, el.id],
+    []
+  );
+
+  const amountInReservas = (id: string) => {
+    const amount = idsInReservas.reduce((acc, el) => {
+      if (el === id) acc += 1;
+      return acc;
+    }, 0);
+    return amount;
+  };
+
   return (
-    <ReservasContext.Provider value={{ ...state, addReserva, deleteReserva }}>
+    <ReservasContext.Provider
+      value={{ ...state, addReserva, deleteReserva, amountInReservas }}
+    >
       {children}
     </ReservasContext.Provider>
   );

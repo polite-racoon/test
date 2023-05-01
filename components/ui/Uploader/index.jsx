@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ImageInput from './ImageInput';
 import Loading from './Loading';
 import { isFormValid } from '../../../functions';
-import { imageUplodaer } from '../../../functions';
+import { productUplodaer } from '../../../functions';
 import {
   Box,
   Button,
@@ -22,6 +22,7 @@ export const Uploader = () => {
     subtitle: '',
     description: '',
     price: '',
+    stock: '',
   });
 
   const [errorObj, setErrorObj] = useState({
@@ -31,6 +32,7 @@ export const Uploader = () => {
     description: false,
     price: false,
     image: false,
+    stock: false,
   });
   const [loading, setLoading] = useState(false);
 
@@ -57,10 +59,10 @@ export const Uploader = () => {
   };
 
   const formSubmit = () => {
-    if (!isFormValid(formData, image, setErrorObj)) {
-      return;
-    }
-    imageUplodaer(
+    if (!isFormValid(formData, image, setErrorObj)) return;
+    if (formData.stock === '') formData.stock = 1;
+
+    productUplodaer(
       image,
       landscapeImg,
       formData,
@@ -152,6 +154,19 @@ export const Uploader = () => {
             <p className={errorObj.price ? 'error' : 'notError'}>
               price required
             </p>
+          </div>
+
+          <div>
+            <div className="inputDiv">
+              <input
+                type="number"
+                name="stock"
+                value={formData.stock}
+                onChange={onInputChange}
+                placeholder={'Stock disponible (opcional)'}
+              />
+            </div>
+            <p className={'notError'}>optional</p>
           </div>
 
           <div>

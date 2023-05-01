@@ -16,10 +16,11 @@ export const AddButton = ({
   openModal?: boolean;
   goToCart?: boolean;
 }) => {
-  const { addReserva } = useContext(ReservasContext);
+  const { addReserva, amountInReservas } = useContext(ReservasContext);
   const { openAddToCartModal } = useContext(UIContext);
   const router = useRouter();
 
+  console.log(amountInReservas(itemData.id));
   return (
     <Button
       variant="outlined"
@@ -33,7 +34,9 @@ export const AddButton = ({
       endIcon={<ShoppingCartOutlined />}
       onClick={(e) => {
         e.preventDefault();
-        addReserva(itemData);
+        if (itemData.stock > amountInReservas(itemData.id)) {
+          addReserva(itemData);
+        }
         if (openModal) openAddToCartModal();
         if (goToCart) router.push('/shopping-cart');
       }}

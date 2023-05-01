@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Box, Card, Grid, Typography } from '@mui/material';
+import { Box, Grid, Typography, Paper } from '@mui/material';
 import { Layout } from '../components/layouts';
 import { ReservasContext } from '../context/reservas';
 import { ItemB } from '../components/ui';
@@ -19,7 +19,9 @@ const ShoppingCartPage = () => {
           paddingBottom: '1.5rem',
         }}
       >
-        <Typography variant={'h6'}>Mi Carrito</Typography>
+        <Typography variant={'h4'} sx={{ fontFamily: 'Sacramento' }}>
+          mi carrito
+        </Typography>
       </Box>
       <Box>
         <Grid container spacing={2}>
@@ -28,10 +30,21 @@ const ShoppingCartPage = () => {
           })}
         </Grid>
       </Box>
-      <Box>
-        <Typography>Total</Typography>
-        <Typography>{total}</Typography>
-      </Box>
+      <Paper
+        sx={{
+          padding: '1rem',
+          margin: '1rem',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Typography sx={{ fontSize: '2rem', fontFamily: 'Sacramento' }}>
+          total:
+        </Typography>
+        <Typography
+          sx={{ fonSize: '1.5rem', fontFamily: 'Sacramento' }}
+        >{` $${total}`}</Typography>
+      </Paper>
     </Layout>
   );
 };

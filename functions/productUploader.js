@@ -1,6 +1,6 @@
 import firebase from '../firebase/client';
 
-export const imageUplodaer = (
+export const productUplodaer = (
   image,
   landscapeImg,
   formData,
@@ -98,7 +98,14 @@ const upload = (
         db.collection('productos')
           .add(doc)
           .then(() => {
-            setFormData({ title: '', description: '', price: '', tipo: '' });
+            setFormData({
+              category: '',
+              title: '',
+              subtitle: '',
+              description: '',
+              price: '',
+              stock: '',
+            });
             setImage(null);
             setLandscapeImage(null);
             setLoading(false);

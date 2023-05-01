@@ -11,7 +11,7 @@ export const Item = ({
   itemData: Producto;
   index: number;
 }) => {
-  const { title, price, imageUrl } = itemData;
+  const { title, price, imageUrl, stock } = itemData;
 
   return (
     <Card sx={{ height: '28rem', position: 'relative' }}>
@@ -24,6 +24,9 @@ export const Item = ({
       />
       <Box sx={{ padding: '0.5rem' }}>
         <Typography variant="subtitle2">{title}</Typography>
+        <Typography variant="subtitle2" color="text.secondary">
+          {`${stock} ${stock > 1 ? 'unidades' : 'unidad'}`}
+        </Typography>
       </Box>
       <Box
         sx={{

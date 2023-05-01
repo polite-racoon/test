@@ -9,4 +9,5 @@ export interface Producto {
   landscapeImgUrl?: string;
   sold: boolean;
   date: number;
+  stock: number;
 }

@@ -1,14 +1,26 @@
 import { useState } from 'react';
 import Image from 'next/legacy/image';
 import { Box, Button, Card, Typography } from '@mui/material';
-import { Stars } from './Stars';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-export const DeleteItem = ({ title, imageUrl, price, id, onDelete }) => {
+export const DeleteItem = ({
+  title,
+  imageUrl,
+  price,
+  id,
+  onDelete,
+  priority,
+}) => {
   const [disabled, setDisabled] = useState(false);
   return (
     <Card sx={{ height: '28rem', position: 'relative' }}>
-      <Image src={imageUrl} width={680} height={1020} alt="" />
+      <Image
+        src={imageUrl}
+        width={680}
+        height={1020}
+        alt=""
+        // priority={priority}
+      />
       <Box sx={{ padding: '0.5rem' }}>
         <Typography variant="subtitle2">{title}</Typography>
         <Typography variant="h6" sx={{ color: 'gray' }}>

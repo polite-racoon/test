@@ -6,6 +6,7 @@ import { ProductosContext } from '../../context/productos';
 
 export const ItemList = () => {
   const { productos } = useContext(ProductosContext);
+  console.log(productos);
 
   return (
     <Grid container spacing={1.3}>

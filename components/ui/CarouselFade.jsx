@@ -1,28 +1,22 @@
-import { useContext } from 'react';
 import Image from 'next/legacy/image';
 import Carousel from 'react-bootstrap/Carousel';
 
-import { ProductosContext } from '../../context/productos';
-
-export const CarouselFade = () => {
-  const { productos } = useContext(ProductosContext);
-  const lastProducts = productos.slice(0, 3);
-
+export const CarouselFade = ({ elements, fade = true }) => {
   return (
-    <Carousel fade>
-      {lastProducts.map((product, i) => {
+    <Carousel fade={fade}>
+      {elements.map((element, i) => {
         return (
-          <Carousel.Item key={product.id}>
+          <Carousel.Item key={element.id}>
             <Image
               className="d-block w-100"
-              src={product.landscapeImgUrl}
-              alt={product.title}
+              src={element.landscapeImgUrl}
+              alt={element.title}
               width={600}
               height={400}
               priority={i === 0}
             />
             <Carousel.Caption>
-              <p>{product.subtitle}</p>
+              <p>{element.subtitle}</p>
             </Carousel.Caption>
           </Carousel.Item>
         );

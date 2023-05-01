@@ -24,6 +24,7 @@ export const Layout: FC<Props> = ({ title = 'tiendita nomada', children }) => {
           display: 'flex',
           alignItems: 'center',
           flexDirection: 'column',
+          width: '100%',
         }}
       >
         {children}

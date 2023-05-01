@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
 import { Box, Typography } from '@mui/material';
 
-import { useAuth } from '../context/auth';
-import { Layout } from '../components/layouts';
 import {
   Logger,
   ItemList,
   AddToCartModal,
-  CarouselFade,
+  MainCarousel,
 } from '../components/ui';
+import { useAuth } from '../context/auth';
+import { Layout } from '../components/layouts';
 
 const Home: NextPage = () => {
   const { user } = useAuth();
@@ -16,9 +16,7 @@ const Home: NextPage = () => {
   return (
     <Layout>
       <Box sx={{ margin: '1rem 0 2rem 0' }}>{!user && <Logger />}</Box>
-      <Box display="flex" justifyContent="center">
-        <CarouselFade />
-      </Box>
+      <MainCarousel />
       <Box display="flex" justifyContent="center">
         <Typography
           sx={{ margin: '2rem', fontFamily: 'Sacramento', fontSize: '1.5rem' }}

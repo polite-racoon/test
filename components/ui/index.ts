@@ -13,3 +13,4 @@ export * from './AddToCartModal';
 export * from './CarouselFade';
 export * from './Svg';
 export * from './AddButton';
+export * from './MainCarousel';

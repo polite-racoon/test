@@ -1,6 +1,6 @@
 import { FC, ReactNode, useEffect, useReducer } from 'react';
 import { ReservasContext, reservasReducer } from './';
-import { Producto, ReservasState } from '../../interfaces';
+import { Reserva, ReservasState } from '../../interfaces';
 import Cookies from 'js-cookie';
 
 interface Props {
@@ -28,29 +28,25 @@ export const ReservasProvider: FC<Props> = ({ children }) => {
     Cookies.set('reservas', JSON.stringify(state.reservas));
   }, [state.reservas]);
 
-  const addReserva = (reserva: Producto) => {
+  const addReserva = (reserva: Reserva) => {
     dispatch({ type: '[Reservas] - addReserva', payload: reserva });
   };
   const deleteReserva = (id: string) => {
     dispatch({ type: '[Reservas] - deleteReserva', payload: id });
   };
 
-  const idsInReservas = state.reservas.reduce(
-    (acc, el): any => [...acc, el.id],
-    []
-  );
-
-  const amountInReservas = (id: string) => {
-    const amount = idsInReservas.reduce((acc, el) => {
-      if (el === id) acc += 1;
-      return acc;
-    }, 0);
-    return amount;
+  const quantityInReservas = (id: string) => {
+    const reservasById: any = state.reservas.reduce(
+      (acc, el) => ({ ...acc, [el.id]: el }),
+      {}
+    );
+    if (!reservasById[id]) return 0;
+    return reservasById[id].quantity;
   };
 
   return (
     <ReservasContext.Provider
-      value={{ ...state, addReserva, deleteReserva, amountInReservas }}
+      value={{ ...state, addReserva, deleteReserva, quantityInReservas }}
     >
       {children}
     </ReservasContext.Provider>

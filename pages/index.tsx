@@ -5,6 +5,7 @@ import {
   Logger,
   ItemList,
   AddToCartModal,
+  StockWarningModal,
   MainCarousel,
 } from '../components/ui';
 import { useAuth } from '../context/auth';
@@ -26,6 +27,7 @@ const Home: NextPage = () => {
       </Box>
       <ItemList />
       <AddToCartModal />
+      <StockWarningModal />
     </Layout>
   );
 };

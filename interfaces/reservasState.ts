@@ -1,5 +1,5 @@
-import { Producto } from './producto';
+import { Reserva } from './reserva';
 
 export interface ReservasState {
-  reservas: Producto[];
+  reservas: Reserva[];
 }

@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import Image from 'next/image';
 import { Box, Card, Grid, Modal, Typography } from '@mui/material';
-
-import { UIContext } from '../../context/ui';
-import { ReservasContext } from '../../context/reservas';
-import { info } from 'console';
+import { Logo } from '../Logo';
+import CheckIcon from '@mui/icons-material/Check';
+import { UIContext } from '../../../context/ui';
+import { ReservasContext } from '../../../context/reservas';
 
 const style = {
   position: 'absolute',
@@ -35,14 +35,25 @@ export const AddToCartModal = () => {
       aria-describedby="modal-modal-description"
     >
       <Box sx={style}>
-        <Typography
-          id="modal-modal-title"
-          variant="h6"
-          component="h2"
-          sx={{ pb: 2 }}
+        <Logo />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            paddingBottom: '1rem',
+          }}
         >
-          Producto agragado al carrito
-        </Typography>
+          <Typography
+            id="modal-modal-title"
+            variant="body1"
+            component="h2"
+            sx={{ textAlign: 'center' }}
+          >
+            Producto agragado al carrito
+          </Typography>
+          <CheckIcon fontSize="small" />
+        </Box>
+
         <Card sx={{ boxShadow: 24 }}>
           <Grid container>
             <Grid item xs={6}>

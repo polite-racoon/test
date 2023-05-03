@@ -16,11 +16,11 @@ export const AddButton = ({
   openModal?: boolean;
   goToCart?: boolean;
 }) => {
-  const { addReserva, amountInReservas } = useContext(ReservasContext);
-  const { openAddToCartModal } = useContext(UIContext);
+  const { addReserva, quantityInReservas } = useContext(ReservasContext);
+  const { openAddToCartModal, openStockWarningModal } = useContext(UIContext);
   const router = useRouter();
 
-  console.log(amountInReservas(itemData.id));
+  console.log(quantityInReservas(itemData.id));
   return (
     <Button
       variant="outlined"
@@ -34,11 +34,19 @@ export const AddButton = ({
       endIcon={<ShoppingCartOutlined />}
       onClick={(e) => {
         e.preventDefault();
-        if (itemData.stock > amountInReservas(itemData.id)) {
-          addReserva(itemData);
+        if (itemData.stock > quantityInReservas(itemData.id)) {
+          const reserva = {
+            ...itemData,
+            quantity: 1,
+            stock: null,
+          };
+
+          addReserva(reserva);
+          if (openModal) openAddToCartModal();
+          if (goToCart) router.push('/shopping-cart');
+        } else {
+          openStockWarningModal();
         }
-        if (openModal) openAddToCartModal();
-        if (goToCart) router.push('/shopping-cart');
       }}
     >
       Agregar

@@ -1,4 +1,4 @@
-export interface Producto {
+export interface Reserva {
   id: string;
   category: string;
   title: string;
@@ -8,6 +8,6 @@ export interface Producto {
   imageUrl: string;
   landscapeImgUrl?: string;
   date: number;
-  stock: number;
-  quantity: null;
+  quantity: number;
+  stock: null;
 }

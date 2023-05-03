@@ -1,7 +1,6 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { styled } from '@mui/material/styles';
 import { Card } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -15,7 +14,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import { ProductosContext } from '../../../context/productos';
 import { Layout } from '../../../components/layouts';
-import { AddButton } from '../../../components/ui';
+import { AddButton, StockWarningModal } from '../../../components/ui';
 import { Svg } from '../../../components/ui';
 
 export default function ProductPage() {
@@ -34,23 +33,6 @@ export default function ProductPage() {
     price,
     date,
   } = product;
-
-  const ExpandMore = styled((props) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-  })(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
-  }));
-
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
 
   return (
     <Layout>
@@ -107,6 +89,7 @@ export default function ProductPage() {
           </Link>
         </CardActions>
       </Card>
+      <StockWarningModal />
     </Layout>
   );
 }

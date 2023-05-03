@@ -1,12 +1,12 @@
 import { createContext } from 'react';
-import { Producto } from '../../interfaces';
+import { Reserva } from '../../interfaces';
 
 interface ContextProps {
-  reservas: Producto[];
+  reservas: Reserva[];
   // methods
-  addReserva: (reserva: Producto) => void;
+  addReserva: (reserva: Reserva) => void;
   deleteReserva: (id: string) => void;
-  amountInReservas: (id: string) => number;
+  quantityInReservas: (id: string) => number;
 }
 
 export const ReservasContext = createContext({} as ContextProps);

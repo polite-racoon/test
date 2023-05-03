@@ -8,11 +8,13 @@ interface Props {
 export interface UIState {
   sidemenuOpen: boolean;
   addToCartModalOpen: boolean;
+  stockWarningModalOpen: boolean;
 }
 
 const UI_INITIAL_STATE: UIState = {
   sidemenuOpen: false,
   addToCartModalOpen: false,
+  stockWarningModalOpen: false,
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
@@ -27,11 +29,19 @@ export const UIProvider: FC<Props> = ({ children }) => {
   };
 
   const openAddToCartModal = () => {
-    dispatch({ type: '[UI] - open modal' });
+    dispatch({ type: '[UI] - open product-added modal' });
   };
 
   const closeAddToCartModal = () => {
-    dispatch({ type: '[UI] - close modal' });
+    dispatch({ type: '[UI] - close product-added modal' });
+  };
+
+  const openStockWarningModal = () => {
+    dispatch({ type: '[UI] - open stock-warning modal' });
+  };
+
+  const closeStockWarningModal = () => {
+    dispatch({ type: '[UI] - close stock-warning modal' });
   };
 
   return (
@@ -42,6 +52,8 @@ export const UIProvider: FC<Props> = ({ children }) => {
         closeSidemenu,
         openAddToCartModal,
         closeAddToCartModal,
+        openStockWarningModal,
+        closeStockWarningModal,
       }}
     >
       {children}

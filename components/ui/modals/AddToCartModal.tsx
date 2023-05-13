@@ -58,7 +58,7 @@ export const AddToCartModal = () => {
           <Grid container>
             <Grid item xs={6}>
               <Image
-                src={itemData?.imageUrl}
+                src={itemData?.imageUrl || ''}
                 height={200}
                 width={146}
                 alt={'imagen del producto'}

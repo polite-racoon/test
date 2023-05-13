@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { useRouter } from 'next/router';
-import Image from 'next/legacy/image';
 import {
   AppBar,
   Avatar,
@@ -21,7 +20,7 @@ import { ReservasContext } from '../../context/reservas';
 export const Navbar = () => {
   const { user } = useAuth();
   const { openSidemenu } = useContext(UIContext);
-  const { reservas } = useContext(ReservasContext);
+  const { numOfReservas } = useContext(ReservasContext);
   const router = useRouter();
 
   const onUserIconClick = async () => {
@@ -72,7 +71,7 @@ export const Navbar = () => {
           >
             <ShoppingCartOutlinedIcon />
           </IconButton>
-          {!!reservas.length && (
+          {Boolean(numOfReservas) && (
             <div
               style={{
                 position: 'absolute',
@@ -87,7 +86,7 @@ export const Navbar = () => {
                 color: 'white',
               }}
             >
-              {reservas.length}
+              {numOfReservas}
             </div>
           )}
 

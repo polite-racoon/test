@@ -8,7 +8,7 @@ export * from './Uploader';
 export * from './ItemList';
 export * from './DeleteList';
 export * from './DeleteItem';
-export * from './ItemB';
+export * from './ShoppingCartItem';
 export * from './CarouselFade';
 export * from './Svg';
 export * from './AddButton';

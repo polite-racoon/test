@@ -1,5 +1,9 @@
 import { Reserva } from './reserva';
 
+export interface Reservas {
+  [key: string]: Reserva | undefined;
+}
+
 export interface ReservasState {
-  reservas: Reserva[];
+  reservasById: Reservas;
 }

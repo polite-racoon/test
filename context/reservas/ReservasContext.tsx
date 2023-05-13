@@ -1,12 +1,17 @@
 import { createContext } from 'react';
-import { Reserva } from '../../interfaces';
+import { Reserva, Reservas } from '../../interfaces';
 
 interface ContextProps {
-  reservas: Reserva[];
+  reservasById: Reservas;
+  reservas: (Reserva | undefined)[];
+  numOfReservas: number;
   // methods
+  itemQuantityInReservas: (id: string) => number;
+  // dispatchers
   addReserva: (reserva: Reserva) => void;
   deleteReserva: (id: string) => void;
-  quantityInReservas: (id: string) => number;
+  updateQuantity: (id: string, quantity: number) => void;
+  reset: () => void;
 }
 
 export const ReservasContext = createContext({} as ContextProps);

@@ -16,11 +16,10 @@ export const AddButton = ({
   openModal?: boolean;
   goToCart?: boolean;
 }) => {
-  const { addReserva, quantityInReservas } = useContext(ReservasContext);
+  const { addReserva, itemQuantityInReservas } = useContext(ReservasContext);
   const { openAddToCartModal, openStockWarningModal } = useContext(UIContext);
   const router = useRouter();
 
-  console.log(quantityInReservas(itemData.id));
   return (
     <Button
       variant="outlined"
@@ -34,10 +33,11 @@ export const AddButton = ({
       endIcon={<ShoppingCartOutlined />}
       onClick={(e) => {
         e.preventDefault();
-        if (itemData.stock > quantityInReservas(itemData.id)) {
+        const currentQuantity = itemQuantityInReservas(itemData.id);
+        if (itemData.stock > currentQuantity) {
           const reserva = {
             ...itemData,
-            quantity: 1,
+            quantity: currentQuantity + 1,
             stock: null,
           };
 

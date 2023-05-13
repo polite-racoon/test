@@ -11,6 +11,10 @@ interface ProductosState {
   productos: Producto[];
 }
 
+interface ProductsById {
+  [id: string]: Producto | undefined;
+}
+
 const Productos_INITIAL_STATE: ProductosState = {
   productos: [],
 };
@@ -25,6 +29,7 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
     const db = firebase.firestore();
     const temp: any = [];
     db.collection('productos')
+      .where('stock', '>', 0)
       .get()
       .then((qs) => {
         qs.forEach((doc) => {
@@ -38,19 +43,30 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
     return () => {};
   }, []);
 
-  const productsByIdObj = state.productos.reduce(
+  const productsByIdObj: ProductsById = state.productos.reduce(
     (acc, el) => ({ ...acc, [el.id]: el }),
     {}
   );
-
+  console.log('productsByIdObj', productsByIdObj);
   const productsByCategoryObj = state.productos.reduce(
     (acc, el) => ({ ...acc, [el.category]: el }),
     {}
   );
 
+  const getStockById = (id: string): number => {
+    const product = productsByIdObj[id];
+    return product ? product.stock : 0;
+  };
+
   return (
     <ProductosContext.Provider
-      value={{ ...state, ...productsByIdObj, ...productsByCategoryObj }}
+      value={{
+        ...state,
+        ...productsByIdObj,
+        ...productsByCategoryObj,
+        productsByIdObj,
+        getStockById,
+      }}
     >
       {children}
     </ProductosContext.Provider>

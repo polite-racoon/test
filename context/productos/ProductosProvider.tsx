@@ -47,7 +47,7 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
     (acc, el) => ({ ...acc, [el.id]: el }),
     {}
   );
-  console.log('productsByIdObj', productsByIdObj);
+
   const productsByCategoryObj = state.productos.reduce(
     (acc, el) => ({ ...acc, [el.category]: el }),
     {}

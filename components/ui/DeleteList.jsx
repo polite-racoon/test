@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
 import { DeleteItem } from './DeleteItem';
 import firebase from '../../firebase/client';
-import { getImageNameFromImageUrl } from '../../functions';
 
 export const DeleteList = () => {
   const db = firebase.firestore();
@@ -23,28 +22,6 @@ export const DeleteList = () => {
     };
   }, [db]);
 
-  const onDelete = (id, imageUrl, setDisabled) => {
-    setDisabled(true);
-    const imageName = getImageNameFromImageUrl(imageUrl);
-    const desertRef = firebase
-      .storage()
-      .ref()
-      .child(`fotosDeProductos/${imageName}`);
-
-    desertRef
-      .delete()
-      .then(() => {
-        db.collection('productos').doc(id).delete();
-      })
-      .then(() => {
-        console.log('document deleted');
-      })
-      .catch((error) => {
-        console.log(error);
-        setDisabled(false);
-      });
-  };
-
   return (
     <Grid container spacing={1.3}>
       {items.map(({ title, price, imageUrl, id }, i) => {
@@ -54,9 +31,8 @@ export const DeleteList = () => {
               title={title}
               price={price}
               imageUrl={imageUrl}
-              onDelete={onDelete}
               id={id}
-              // priority={i < 4}
+              priority={i < 4}
             />
           </Grid>
         );

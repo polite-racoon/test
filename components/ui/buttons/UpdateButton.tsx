@@ -4,12 +4,12 @@ import firebase from '../../../firebase/client';
 
 interface UploadButtonProps {
   id: string;
-  newStock: number | string;
+  newStock: string;
   disabled: boolean;
 }
 
 export const UpdateButton = ({ id, newStock, disabled }: UploadButtonProps) => {
-  const updateStock = (id: string, newStock: string | number) => {
+  const updateStock = (id: string, newStock: string) => {
     const db = firebase.firestore();
     db.collection('productos')
       .doc(id)

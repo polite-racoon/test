@@ -8,7 +8,7 @@ interface DeleteItemProps {
   imageUrl: string;
   price: number;
   id: string;
-  stock: number | string;
+  stock: number;
   priority?: boolean;
 }
 
@@ -20,7 +20,7 @@ export const DeleteItem = ({
   stock,
   priority,
 }: DeleteItemProps) => {
-  const [newStock, setNewStock] = useState(stock);
+  const [newStock, setNewStock] = useState(String(stock));
 
   const handleChange = (
     e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -55,7 +55,7 @@ export const DeleteItem = ({
         <UpdateButton
           id={id}
           newStock={newStock}
-          disabled={newStock == stock}
+          disabled={newStock === String(stock)}
         />
         <DeleteButton id={id} imageUrl={imageUrl} />
       </Box>

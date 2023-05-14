@@ -3,9 +3,9 @@ import { useRouter } from 'next/router';
 import { Button } from '@mui/material';
 import { ShoppingCartOutlined } from '@mui/icons-material';
 
-import { ReservasContext } from '../../context/reservas';
-import { UIContext } from '../../context/ui';
-import { Producto } from '../../interfaces';
+import { ReservasContext } from '../../../context/reservas';
+import { UIContext } from '../../../context/ui';
+import { Producto } from '../../../interfaces';
 
 export const AddButton = ({
   itemData,

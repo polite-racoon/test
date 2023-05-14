@@ -3,7 +3,7 @@ import { Box, Grid, Typography, Paper } from '@mui/material';
 import { Layout } from '../components/layouts';
 import { ReservasContext } from '../context/reservas';
 import { ShoppingCartItem } from '../components/ui';
-import { BuyButton } from '../components/ui/BuyButton';
+import { BuyButton } from '../components/ui/buttons/BuyButton';
 
 const ShoppingCartPage = () => {
   const { reservas } = useContext(ReservasContext);

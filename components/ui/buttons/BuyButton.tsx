@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import { Button } from '@mui/material';
 
-import firebase from '../../firebase/client';
-import { useAuth } from '../../context/auth';
-import { ReservasContext } from '../../context/reservas';
-import { ProductosContext } from '../../context/productos';
+import firebase from '../../../firebase/client';
+import { useAuth } from '../../../context/auth';
+import { ReservasContext } from '../../../context/reservas';
+import { ProductosContext } from '../../../context/productos';
 
 interface BuyButtonProps {
   disabled: boolean;

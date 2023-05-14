@@ -1,8 +1,8 @@
 import { useState, Dispatch } from 'react';
 import { Button } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import firebase from '../../firebase/client';
-import { getImageNameFromImageUrl } from '../../functions';
+import firebase from '../../../firebase/client';
+import { getImageNameFromImageUrl } from '../../../functions';
 
 interface DeleteButtonProps {
   id: string;

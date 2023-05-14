@@ -68,12 +68,6 @@ export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
             <Typography>{title}</Typography>
             <Typography>${price}</Typography>
             <FormControl fullWidth>
-              {/* <Box
-                display={'flex'}
-                alignItems={'center'}
-                justifyContent={'space-between'}
-                sx={{ minWidth: '125px' }}
-              > */}
               <InputLabel id="demo-simple-select-label">cantidad</InputLabel>
               <Select
                 labelId="demo-simple-select-label"

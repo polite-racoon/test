@@ -1,12 +1,14 @@
+import { useState, ChangeEvent } from 'react';
 import Image from 'next/legacy/image';
-import { Box, Card, Typography } from '@mui/material';
-import { DeleteButton } from './DeleteButton';
+import { Box, Card, TextField, Typography } from '@mui/material';
+import { DeleteButton, UpdateButton } from './buttons';
 
 interface DeleteItemProps {
   title: string;
   imageUrl: string;
   price: number;
   id: string;
+  stock: number | string;
   priority?: boolean;
 }
 
@@ -15,10 +17,19 @@ export const DeleteItem = ({
   imageUrl,
   price,
   id,
+  stock,
   priority,
 }: DeleteItemProps) => {
+  const [newStock, setNewStock] = useState(stock);
+
+  const handleChange = (
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => {
+    setNewStock(e.target.value);
+  };
+
   return (
-    <Card sx={{ height: '28rem', position: 'relative' }}>
+    <Card sx={{ height: '32rem', position: 'relative' }}>
       <Image
         src={imageUrl}
         width={680}
@@ -31,9 +42,21 @@ export const DeleteItem = ({
         <Typography variant="h6" sx={{ color: 'gray' }}>
           ${price}
         </Typography>
-        {/* <Stars /> */}
       </Box>
       <Box display="flex" justifyContent="center">
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          type="number"
+          sx={{ mx: '0.5rem' }}
+          value={newStock}
+          onChange={handleChange}
+        />
+        <UpdateButton
+          id={id}
+          newStock={newStock}
+          disabled={newStock == stock}
+        />
         <DeleteButton id={id} imageUrl={imageUrl} />
       </Box>
     </Card>

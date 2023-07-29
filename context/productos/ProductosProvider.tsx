@@ -28,19 +28,25 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
   useEffect(() => {
     const db = firebase.firestore();
     const temp: any = [];
-    db.collection('productos')
-      .where('stock', '>', 0)
-      .get()
-      .then((qs) => {
-        qs.forEach((doc) => {
-          const data = doc.data();
+    const unsubscribe = db
+      .collection('productos')
+      // .where('stock', '>', 0)
+      .onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
           const id = doc.id;
-          temp.push({ ...data, id });
+          const data = doc.data();
+          const tempDoc = {
+            id,
+            ...data,
+          };
+          temp.push(tempDoc);
         });
         dispatch({ type: '[Productos] - loadProductos', payload: temp });
       });
 
-    return () => {};
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   const productsByIdObj: ProductsById = state.productos.reduce(

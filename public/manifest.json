@@ -1,7 +1,7 @@
 {
   "name": "tiendita nomada",
   "short_name": "nomada",
-  "theme_color": "#f0f0ff",
+  "theme_color": "rgb(191, 185, 219)",
   "background_color": "rgb(191, 185, 219)",
   "display": "standalone",
   "orientation": "portrait",

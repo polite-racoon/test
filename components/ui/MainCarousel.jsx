@@ -1,11 +1,8 @@
-import { useContext } from 'react';
 import { Box } from '@mui/material';
 
 import { CarouselFade } from './CarouselFade';
-import { ProductosContext } from '../../context/productos';
 
-export const MainCarousel = () => {
-  const { productos } = useContext(ProductosContext);
+export const MainCarousel = ({ productos }) => {
   const lastProducts = productos.slice(0, 3);
 
   return (

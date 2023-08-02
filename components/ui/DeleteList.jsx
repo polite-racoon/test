@@ -24,20 +24,23 @@ export const DeleteList = () => {
 
   return (
     <Grid container spacing={1.3}>
-      {items.map(({ title, price, imageUrl, id, stock }, i) => {
-        return (
-          <Grid item xs={6} md={4} key={id}>
-            <DeleteItem
-              title={title}
-              price={price}
-              imageUrl={imageUrl}
-              id={id}
-              stock={stock}
-              priority={i < 4}
-            />
-          </Grid>
-        );
-      })}
+      {items.map(
+        ({ title, price, imageUrl, landscapeImgUrl, id, stock }, i) => {
+          return (
+            <Grid item xs={6} md={4} key={id}>
+              <DeleteItem
+                title={title}
+                price={price}
+                imageUrl={imageUrl}
+                landscapeImgUrl={landscapeImgUrl}
+                id={id}
+                stock={stock}
+                priority={i < 4}
+              />
+            </Grid>
+          );
+        }
+      )}
     </Grid>
   );
 };

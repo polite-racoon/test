@@ -6,6 +6,7 @@ import { DeleteButton, UpdateButton } from './buttons';
 interface DeleteItemProps {
   title: string;
   imageUrl: string;
+  landscapeImgUrl: string;
   price: number;
   id: string;
   stock: number;
@@ -15,6 +16,7 @@ interface DeleteItemProps {
 export const DeleteItem = ({
   title,
   imageUrl,
+  landscapeImgUrl,
   price,
   id,
   stock,
@@ -57,7 +59,11 @@ export const DeleteItem = ({
           newStock={newStock}
           disabled={newStock === String(stock)}
         />
-        <DeleteButton id={id} imageUrl={imageUrl} />
+        <DeleteButton
+          id={id}
+          imageUrl={imageUrl}
+          landscapeImgUrl={landscapeImgUrl}
+        />
       </Box>
     </Card>
   );

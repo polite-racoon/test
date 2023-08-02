@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect, useReducer } from 'react';
+import { FC, ReactNode, useEffect, useReducer, useContext } from 'react';
 import { ReservasContext, reservasReducer } from './';
 import { Reserva, Reservas, ReservasState } from '../../interfaces';
 import Cookies from 'js-cookie';
@@ -14,10 +14,29 @@ const Reservas_INITIAL_STATE: ReservasState = {
 export const ReservasProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reservasReducer, Reservas_INITIAL_STATE);
 
+  // // aqui debo saber el estado de los productos. si este cambia debo actualizar el estado de las reservas
+  // // ademas si se quieren modificar las reservas se debe corroborar que cumpla con los productos
+  // const { productsByIdObj } = useContext(ProductosContext);
+
+  // useEffect(() => {
+  //   // actualiza las reservas segun el stock disponible
+  //   const newState = {
+  //     ...state.reservasById,
+  //   };
+  //   Object.keys(newState).forEach((id) => {
+  //     if (newState[id]!.quantity > (productsByIdObj[id]?.stock || 0)) {
+  //       newState[id]!.quantity = productsByIdObj[id]?.stock || 0;
+  //     }
+  //   });
+  // }, [productsByIdObj]);
+
+  // // TODO informar al usuario
+
   useEffect(() => {
     const cookieReservas: Reservas = Cookies.get('reservas')
       ? JSON.parse(Cookies.get('reservas')!)
       : {};
+
     dispatch({
       type: '[Reservas] - Load reservas from cookies',
       payload: cookieReservas,

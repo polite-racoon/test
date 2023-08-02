@@ -1,6 +1,5 @@
 import Image from 'next/legacy/image';
 import { Box, Card, Typography } from '@mui/material';
-import { Stars } from './Stars';
 import { AddButton } from './buttons/AddButton';
 import { Producto } from '../../interfaces';
 

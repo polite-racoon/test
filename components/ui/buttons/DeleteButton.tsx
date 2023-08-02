@@ -7,38 +7,49 @@ import { getImageNameFromImageUrl } from '../../../functions';
 interface DeleteButtonProps {
   id: string;
   imageUrl: string;
+  landscapeImgUrl: string;
 }
 
-export const DeleteButton = ({ id, imageUrl }: DeleteButtonProps) => {
+export const DeleteButton = ({
+  id,
+  imageUrl,
+  landscapeImgUrl,
+}: DeleteButtonProps) => {
   const [disabled, setDisabled] = useState(false);
 
   const db = firebase.firestore();
 
-  const onDelete = (
+  const onDelete = async (
     id: string,
     imageUrl: string,
     setDisabled: Dispatch<boolean>
   ) => {
     setDisabled(true);
     const imageName = getImageNameFromImageUrl(imageUrl);
-    const desertRef = firebase
+    const landscapeImgName = getImageNameFromImageUrl(landscapeImgUrl);
+
+    const desertRef1 = firebase
       .storage()
       .ref()
       .child(`fotosDeProductos/${imageName}`);
 
-    desertRef
-      .delete()
-      .then(() => {
-        db.collection('productos').doc(id).delete();
-      })
-      .then(() => {
-        console.log('document deleted');
-      })
-      .catch((error) => {
-        console.log(error);
-        setDisabled(false);
-      });
+    const desertRef2 = firebase
+      .storage()
+      .ref()
+      .child(`fotosDeProductos/${landscapeImgName}`);
+
+    try {
+      await desertRef1.delete();
+      await desertRef2.delete();
+      await db.collection('productos').doc(id).delete();
+      console.log('document deleted');
+    } catch (error) {
+      console.log(error);
+      alert(error);
+      setDisabled(false);
+    }
   };
+
   return (
     <Button
       variant="outlined"

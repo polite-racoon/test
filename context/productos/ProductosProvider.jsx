@@ -1,33 +1,13 @@
-import { FC, ReactNode, useEffect, useReducer } from 'react';
-import { ProductosContext, productosReducer } from '.';
-import { Producto } from '../../interfaces';
+import { useEffect, useState } from 'react';
+import { ProductosContext } from '.';
 import firebase from '../../firebase/client';
 
-interface Props {
-  children: ReactNode;
-}
-
-interface ProductosState {
-  productos: Producto[];
-}
-
-interface ProductsById {
-  [id: string]: Producto | undefined;
-}
-
-const Productos_INITIAL_STATE: ProductosState = {
-  productos: [],
-};
-
-export const ProductosProvider: FC<Props> = ({ children }) => {
-  const [state, dispatch] = useReducer(
-    productosReducer,
-    Productos_INITIAL_STATE
-  );
+export const ProductosProvider = ({ children }) => {
+  const [state, setState] = useState({ productos: [] });
+  const db = firebase.firestore();
 
   useEffect(() => {
-    const db = firebase.firestore();
-    const temp: any = [];
+    const temp = [];
     const unsubscribe = db
       .collection('productos')
       // .where('stock', '>', 0)
@@ -41,15 +21,15 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
           };
           temp.push(tempDoc);
         });
-        dispatch({ type: '[Productos] - loadProductos', payload: temp });
+        setState({ productos: temp });
       });
 
     return () => {
       unsubscribe();
     };
-  }, []);
+  }, [db]);
 
-  const productsByIdObj: ProductsById = state.productos.reduce(
+  const productsByIdObj = state.productos.reduce(
     (acc, el) => ({ ...acc, [el.id]: el }),
     {}
   );
@@ -59,7 +39,7 @@ export const ProductosProvider: FC<Props> = ({ children }) => {
     {}
   );
 
-  const getStockById = (id: string): number => {
+  const getStockById = (id) => {
     const product = productsByIdObj[id];
     return product ? product.stock : 0;
   };

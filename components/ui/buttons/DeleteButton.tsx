@@ -19,11 +19,7 @@ export const DeleteButton = ({
 
   const db = firebase.firestore();
 
-  const onDelete = async (
-    id: string,
-    imageUrl: string,
-    setDisabled: Dispatch<boolean>
-  ) => {
+  const onDelete = async () => {
     setDisabled(true);
     const imageName = getImageNameFromImageUrl(imageUrl);
     const landscapeImgName = getImageNameFromImageUrl(landscapeImgUrl);
@@ -56,9 +52,13 @@ export const DeleteButton = ({
       disableElevation
       color="info"
       size="small"
-      sx={{ textTransform: 'none', position: 'absolute', bottom: '0.5rem' }}
+      sx={{
+        textTransform: 'none',
+        position: 'absolute',
+        bottom: '0.5rem',
+      }}
       endIcon={<DeleteIcon />}
-      onClick={() => onDelete(id, imageUrl, setDisabled)}
+      onClick={() => onDelete()}
       disabled={disabled}
     >
       Borrar

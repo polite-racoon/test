@@ -9,5 +9,6 @@ export interface Reserva {
   landscapeImgUrl?: string;
   date: number;
   quantity: number;
+  updatedByStockChange: boolean;
   stock: null;
 }

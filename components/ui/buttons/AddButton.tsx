@@ -38,6 +38,7 @@ export const AddButton = ({
           const reserva = {
             ...itemData,
             quantity: currentQuantity + 1,
+            updatedByStockChange: false,
             stock: null,
           };
 

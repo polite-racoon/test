@@ -18,10 +18,12 @@ const Home = () => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
+    // En la base de datos debemos observar todos los productos, tambien los sin stock, por si vuelven a tener stock
     const unsubscribe = db.collection('productos').onSnapshot((qs) => {
       const temp = [];
       qs.forEach((doc) => {
         const data = doc.data();
+        if (data.stock === 0) return; // filtra los productos sin stock.
         const id = doc.id;
         temp.push({ ...data, id });
       });

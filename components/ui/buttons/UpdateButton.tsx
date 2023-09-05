@@ -10,6 +10,7 @@ interface UploadButtonProps {
 
 export const UpdateButton = ({ id, newStock, disabled }: UploadButtonProps) => {
   const updateStock = (id: string, newStock: string) => {
+    if (Number(newStock) < 0) return alert('El stock no puede ser menor a 0');
     const db = firebase.firestore();
     db.collection('productos')
       .doc(id)
@@ -23,7 +24,11 @@ export const UpdateButton = ({ id, newStock, disabled }: UploadButtonProps) => {
       disableElevation
       color="info"
       size="small"
-      sx={{ textTransform: 'none', position: 'absolute', bottom: '3rem' }}
+      sx={{
+        textTransform: 'none',
+        marginTop: '0.5rem',
+        marginBottom: '0.5rem',
+      }}
       endIcon={<UpdateIcon />}
       onClick={() => {
         updateStock(id, newStock);

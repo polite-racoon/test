@@ -4,7 +4,7 @@ import { Reserva, Reservas } from '../../interfaces';
 type ReservasActionType =
   | { type: '[Reservas] - addReserva'; payload: Reserva }
   | { type: '[Reservas] - deleteReserva'; payload: string }
-  | { type: '[Reservas] - Load reservas from cookies'; payload: Reservas }
+  | { type: '[Reservas] - Update reservas'; payload: Reservas }
   | {
       type: '[Reservas] - Update reservas quantity';
       payload: { id: string; quantity: number };
@@ -37,7 +37,7 @@ export const reservasReducer = (
         reservasById: updatedReservas,
       };
 
-    case '[Reservas] - Load reservas from cookies':
+    case '[Reservas] - Update reservas':
       return {
         reservasById: { ...action.payload },
       };
@@ -47,6 +47,7 @@ export const reservasReducer = (
         ...state.reservasById[action.payload.id],
       } as Reserva;
       updatedReserva.quantity = action.payload.quantity;
+      updatedReserva.updatedByStockChange = false;
 
       return {
         reservasById: {

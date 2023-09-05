@@ -23,7 +23,8 @@ interface ShoppinCartProps {
 }
 
 export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
-  const { title, price, imageUrl, id, quantity } = reserva;
+  const { title, price, imageUrl, id, quantity, updatedByStockChange } =
+    reserva;
   const { deleteReserva, updateQuantity } = useContext(ReservasContext);
   const { getStockById } = useContext(ProductosContext);
   const stock = getStockById(id);
@@ -63,10 +64,12 @@ export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
               flexDirection: 'column',
               justifyContent: 'center',
               alignItems: 'center',
+              paddingLeft: '1rem',
             }}
           >
             <Typography>{title}</Typography>
             <Typography>${price}</Typography>
+
             <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">cantidad</InputLabel>
               <Select
@@ -91,6 +94,12 @@ export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
             </IconButton>
           </Grid>
         </Grid>
+        {updatedByStockChange && (
+          <Typography sx={{ fontSize: '0.6rem' }}>
+            Tu reserva ha sido modificada debido a cambios en el stock
+            disponible.
+          </Typography>
+        )}
       </Paper>
     </Grid>
   );

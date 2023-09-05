@@ -45,7 +45,7 @@ export const DeleteItem = ({
           ${price}
         </Typography>
       </Box>
-      <Box display="flex" justifyContent="center">
+      <Box display="flex" alignItems={'center'} flexDirection={'column'}>
         <TextField
           id="outlined-basic"
           variant="outlined"
@@ -59,6 +59,10 @@ export const DeleteItem = ({
           newStock={newStock}
           disabled={newStock === String(stock)}
         />
+      </Box>
+      {/* este box evita que delete button se active al presionar UpdateButton estando deshabilitado */}
+      <Box sx={{ height: '1.5rem' }} onClick={() => {}}></Box>
+      <Box display="flex" justifyContent={'center'}>
         <DeleteButton
           id={id}
           imageUrl={imageUrl}

@@ -10,4 +10,5 @@ export interface Producto {
   date: number;
   stock: number;
   quantity: null;
+  updatedByStockChange: null;
 }

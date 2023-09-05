@@ -44,7 +44,14 @@ class MyDocument extends Document {
         <link rel="apple-touch-icon" href="/apple-icon.png"></link>
         <meta name="theme-color" content="#317EFB" /> */}
         </Head>
-        <body>
+        <body
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Main />
           <NextScript />
         </body>

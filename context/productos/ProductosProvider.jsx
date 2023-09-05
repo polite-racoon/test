@@ -7,19 +7,15 @@ export const ProductosProvider = ({ children }) => {
   const db = firebase.firestore();
 
   useEffect(() => {
-    const temp = [];
     const unsubscribe = db
       .collection('productos')
       // .where('stock', '>', 0)
       .onSnapshot((querySnapshot) => {
+        const temp = [];
         querySnapshot.forEach((doc) => {
           const id = doc.id;
           const data = doc.data();
-          const tempDoc = {
-            id,
-            ...data,
-          };
-          temp.push(tempDoc);
+          temp.push({ id, ...data });
         });
         setState({ productos: temp });
       });

@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { Box, Typography } from '@mui/material';
+import { ProductosContext } from '../context/productos';
 
 import {
   Logger,
@@ -10,29 +12,30 @@ import {
 } from '../components/ui';
 import { useAuth } from '../context/auth';
 import { Layout } from '../components/layouts';
-import firebase from '../firebase/client';
+// import firebase from '../firebase/client';
 
 const Home = () => {
   const { user } = useAuth();
-  const db = firebase.firestore();
-  const [productos, setProductos] = useState([]);
+  const { productos } = useContext(ProductosContext);
+  // const db = firebase.firestore();
+  // const [productos, setProductos] = useState([]);
 
-  useEffect(() => {
-    // En la base de datos debemos observar todos los productos, tambien los sin stock, por si vuelven a tener stock
-    const unsubscribe = db.collection('productos').onSnapshot((qs) => {
-      const temp = [];
-      qs.forEach((doc) => {
-        const data = doc.data();
-        if (data.stock === 0) return; // filtra los productos sin stock.
-        const id = doc.id;
-        temp.push({ ...data, id });
-      });
-      setProductos(temp);
-    });
-    return () => {
-      unsubscribe();
-    };
-  }, [db]);
+  // useEffect(() => {
+  //   // En la base de datos debemos observar todos los productos, tambien los sin stock, por si vuelven a tener stock
+  //   const unsubscribe = db.collection('productos').onSnapshot((qs) => {
+  //     const temp = [];
+  //     qs.forEach((doc) => {
+  //       const data = doc.data();
+  //       if (data.stock === 0) return; // filtra los productos sin stock.
+  //       const id = doc.id;
+  //       temp.push({ ...data, id });
+  //     });
+  //     setProductos(temp);
+  //   });
+  //   return () => {
+  //     unsubscribe();
+  //   };
+  // }, [db]);
 
   return (
     <Layout>

@@ -10,7 +10,13 @@ interface Props {
 
 export const Layout: FC<Props> = ({ title = 'tiendita nomada', children }) => {
   return (
-    <Box>
+    <Box
+      style={{
+        maxWidth: '578px',
+        position: 'relative',
+        backgroundColor: '#f0f0ff',
+      }}
+    >
       <Head>
         <title>{title}</title>
       </Head>
@@ -19,18 +25,16 @@ export const Layout: FC<Props> = ({ title = 'tiendita nomada', children }) => {
       <Box
         sx={{
           padding: '0.6rem',
-          backgroundColor: '#f0f0ff',
-          minHeight: '90vh',
+          minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
           flexDirection: 'column',
           width: '100%',
+          paddingBottom: '5rem',
+          margin: 0,
         }}
       >
         {children}
-        <br></br>
-        <br></br>
-        <br></br>
       </Box>
       <Footer />
     </Box>

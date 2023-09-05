@@ -2,7 +2,7 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Divider,
-  Paper,
+  Box,
 } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
@@ -10,9 +10,13 @@ import PinterestIcon from '@mui/icons-material/Pinterest';
 
 export const Footer = () => {
   return (
-    <Paper
-      sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}
-      elevation={3}
+    <Box
+      style={{
+        position: 'sticky',
+        bottom: 0,
+        width: '100%',
+        margin: 0,
+      }}
     >
       <Divider />
       <BottomNavigation>
@@ -29,6 +33,6 @@ export const Footer = () => {
           icon={<PinterestIcon />}
         />
       </BottomNavigation>
-    </Paper>
+    </Box>
   );
 };

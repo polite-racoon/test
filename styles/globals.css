@@ -19,12 +19,30 @@ a {
   border-radius: 100%;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
   body {
     color: white;
     background: black;
+  }
+} */
+
+.main-div {
+  max-width: 576px;
+  position: relative;
+  background-color: #f0f0ff;
+}
+
+@media (min-width: 576px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .main-div {
+    min-width: 576px;
   }
 }

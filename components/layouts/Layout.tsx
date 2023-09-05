@@ -10,13 +10,7 @@ interface Props {
 
 export const Layout: FC<Props> = ({ title = 'tiendita nomada', children }) => {
   return (
-    <Box
-      style={{
-        maxWidth: '578px',
-        position: 'relative',
-        backgroundColor: '#f0f0ff',
-      }}
-    >
+    <div className="main-div">
       <Head>
         <title>{title}</title>
       </Head>
@@ -37,6 +31,6 @@ export const Layout: FC<Props> = ({ title = 'tiendita nomada', children }) => {
         {children}
       </Box>
       <Footer />
-    </Box>
+    </div>
   );
 };

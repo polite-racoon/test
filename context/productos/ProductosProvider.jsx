@@ -35,6 +35,10 @@ export const ProductosProvider = ({ children }) => {
     {}
   );
 
+  const productosDisponibles = state.productos.filter(
+    (producto) => producto.stock > 0
+  );
+
   const getStockById = (id) => {
     const product = productsByIdObj[id];
     return product ? product.stock : 0;
@@ -47,6 +51,7 @@ export const ProductosProvider = ({ children }) => {
         ...productsByIdObj,
         ...productsByCategoryObj,
         productsByIdObj,
+        productosDisponibles,
         getStockById,
       }}
     >

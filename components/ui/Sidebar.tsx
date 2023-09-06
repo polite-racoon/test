@@ -110,10 +110,7 @@ export const Sidebar = () => {
           <Divider />
           <br />
           <Link href="/mis-compras">
-            <ListItem
-              onClick={closeSidemenu}
-              sx={{ backgroundColor: 'rgba(63, 184, 212, 0.2)' }}
-            >
+            <ListItem onClick={closeSidemenu}>
               <ListItemIcon>
                 <CheckBoxOutlinedIcon />
               </ListItemIcon>

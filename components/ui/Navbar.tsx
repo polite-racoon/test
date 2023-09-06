@@ -95,19 +95,10 @@ export const Navbar = () => {
           )}
 
           {user ? (
-            // <IconButton size="large" edge="end" onClick={onUserIconClick}>
-            //   <Image
-            //     src={user.photoUrl}
-            //     height={24}
-            //     width={24}
-            //     alt="user image"
-            //     className="userImage"
-            //   />
-            // </IconButton>
             <IconButton size="large" edge="end" onClick={onUserIconClick}>
               <Avatar
                 sx={{
-                  bgcolor: '#ba68c8',
+                  bgcolor: '#9667e0',
                   height: '1.5rem',
                   width: '1.5rem',
                   fontSize: '1rem',

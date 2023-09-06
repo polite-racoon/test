@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {
   BottomNavigation,
   BottomNavigationAction,
@@ -20,16 +21,14 @@ export const Footer = () => {
       <Divider />
       <BottomNavigation>
         <BottomNavigationAction
-          // label="Recents"
+          LinkComponent={Link}
+          href="https://www.instagram.com/tiendita_nomada/"
           icon={<InstagramIcon />}
         />
         <BottomNavigationAction
-          // label="Recents"
+          LinkComponent={Link}
+          href={`https://wa.me/56953295712/?text=Hola,%te%20escribo%20desde%20https://tienditanomada.vercel.app`}
           icon={<WhatsAppIcon />}
-        />
-        <BottomNavigationAction
-          // label="Recents"
-          icon={<PinterestIcon />}
         />
       </BottomNavigation>
     </Box>

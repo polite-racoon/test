@@ -4,7 +4,7 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: lavender;
+  background-color: rgb(51, 51, 51);
 }
 
 a {
@@ -23,7 +23,7 @@ a {
 .main-div {
   max-width: 576px;
   position: relative;
-  background-color: #f0f0ff;
+  background-color: #f7f7ff;
 }
 
 @media (min-width: 576px) {

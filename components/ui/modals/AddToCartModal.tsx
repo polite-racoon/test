@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import Image from 'next/image';
-import { Box, Card, Grid, Modal, Typography } from '@mui/material';
+import { useRouter } from 'next/router';
+import { Box, Card, Grid, Modal, Typography, Button } from '@mui/material';
 import { Logo } from '../Logo';
 import CheckIcon from '@mui/icons-material/Check';
 import { UIContext } from '../../../context/ui';
@@ -16,13 +17,15 @@ const style = {
   border: '1px solid #000',
   boxShadow: 24,
   p: 4,
+  backgroundColor: '#f7f7ff',
   // display: "flex",
   // flexDirection: "column",
   // alignItems: "center",
 };
 
 export const AddToCartModal = () => {
-  const { addToCartModalOpen: open, closeAddToCartModal } =
+  const router = useRouter();
+  const { addToCartModalOpen: open, closeAddToCartModal: close } =
     useContext(UIContext);
   const { reservas } = useContext(ReservasContext);
   const itemData = reservas[reservas.length - 1];
@@ -30,7 +33,7 @@ export const AddToCartModal = () => {
   return (
     <Modal
       open={open}
-      onClose={closeAddToCartModal}
+      onClose={close}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -54,8 +57,8 @@ export const AddToCartModal = () => {
           <CheckIcon fontSize="small" />
         </Box>
 
-        <Card sx={{ boxShadow: 24 }}>
-          <Grid container>
+        <Card>
+          <Grid container sx={{ borderBottom: '1px solid #f7f7ff' }}>
             <Grid item xs={6}>
               <Image
                 src={itemData?.imageUrl || ''}
@@ -69,6 +72,42 @@ export const AddToCartModal = () => {
               <Typography>${itemData?.price}</Typography>
             </Grid>
           </Grid>
+          <Box
+            display={'flex'}
+            justifyContent={'space-around'}
+            padding={'1rem'}
+          >
+            {/* <Button
+              variant="outlined"
+              disableElevation
+              color="info"
+              size="small"
+              sx={{
+                textTransform: 'none',
+                paddingX: '1.25rem',
+              }}
+              onClick={(e) => {
+                close();
+              }}
+            >
+              Cerrar
+            </Button> */}
+            <Button
+              variant="outlined"
+              disableElevation
+              color="info"
+              size="small"
+              sx={{
+                textTransform: 'none',
+              }}
+              onClick={(e) => {
+                close();
+                router.push('/shopping-cart');
+              }}
+            >
+              Ver carrito
+            </Button>
+          </Box>
         </Card>
       </Box>
     </Modal>

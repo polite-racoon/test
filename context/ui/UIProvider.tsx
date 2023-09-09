@@ -9,12 +9,14 @@ export interface UIState {
   sidemenuOpen: boolean;
   addToCartModalOpen: boolean;
   stockWarningModalOpen: boolean;
+  purchaseModalOpen: boolean;
 }
 
 const UI_INITIAL_STATE: UIState = {
   sidemenuOpen: false,
   addToCartModalOpen: false,
   stockWarningModalOpen: false,
+  purchaseModalOpen: false,
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
@@ -44,6 +46,10 @@ export const UIProvider: FC<Props> = ({ children }) => {
     dispatch({ type: '[UI] - close stock-warning modal' });
   };
 
+  const showPurchaseModal = (arg: boolean) => {
+    dispatch({ type: '[UI] - show purchase modal', payload: arg });
+  };
+
   return (
     <UIContext.Provider
       value={{
@@ -54,6 +60,7 @@ export const UIProvider: FC<Props> = ({ children }) => {
         closeAddToCartModal,
         openStockWarningModal,
         closeStockWarningModal,
+        showPurchaseModal,
       }}
     >
       {children}

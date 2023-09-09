@@ -13,7 +13,7 @@ export const Item = ({
   const { title, price, imageUrl, stock } = itemData;
 
   return (
-    <Card sx={{ height: '28rem', position: 'relative' }}>
+    <Card sx={{ position: 'relative', paddingBottom: '6rem' }}>
       <Image
         src={imageUrl}
         width={680}

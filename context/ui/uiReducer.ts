@@ -6,7 +6,8 @@ type UIActionType =
   | { type: '[UI] - open product-added modal' }
   | { type: '[UI] - close product-added modal' }
   | { type: '[UI] - open stock-warning modal' }
-  | { type: '[UI] - close stock-warning modal' };
+  | { type: '[UI] - close stock-warning modal' }
+  | { type: '[UI] - show purchase modal'; payload: boolean };
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
@@ -44,6 +45,12 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
       return {
         ...state,
         stockWarningModalOpen: false,
+      };
+
+    case '[UI] - show purchase modal':
+      return {
+        ...state,
+        purchaseModalOpen: action.payload,
       };
 
     default:

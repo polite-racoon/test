@@ -4,6 +4,7 @@ import { Layout } from '../components/layouts';
 import { ReservasContext } from '../context/reservas';
 import { ShoppingCartItem } from '../components/ui';
 import { BuyButton } from '../components/ui/buttons/BuyButton';
+import { PurchaseModal } from '../components/ui/modals/PurchaseModal';
 
 const ShoppingCartPage = () => {
   const { reservas } = useContext(ReservasContext);
@@ -53,6 +54,7 @@ const ShoppingCartPage = () => {
         >{` $${total}`}</Typography>
       </Paper>
       <BuyButton disabled={total === 0} />
+      <PurchaseModal message="Tu compra se ha realizado con éxito" />
     </Layout>
   );
 };

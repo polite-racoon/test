@@ -5,6 +5,7 @@ import firebase from '../../../firebase/client';
 import { useAuth } from '../../../context/auth';
 import { ReservasContext } from '../../../context/reservas';
 import { ProductosContext } from '../../../context/productos';
+import { UIContext } from '../../../context/ui';
 
 interface BuyButtonProps {
   disabled: boolean;
@@ -15,6 +16,8 @@ export const BuyButton = ({ disabled }: BuyButtonProps) => {
   const { reservasById, reset } = useContext(ReservasContext);
   const { productsByIdObj } = useContext(ProductosContext);
   const reservasIds = Object.keys(reservasById);
+  const { showPurchaseModal } = useContext(UIContext);
+
   const { user } = useAuth();
   const userId = user?.uid;
   console.log(userId);
@@ -28,11 +31,14 @@ export const BuyButton = ({ disabled }: BuyButtonProps) => {
         .update({ stock: product!.stock - reservasById[id]!.quantity });
     });
     await Promise.all(updatePromises);
-    const addCompraResult = await db
-      .collection('compras')
-      .add({ user: userId, compras: reservasById });
-    console.log(addCompraResult);
+    const addCompraResult = await db.collection('orders').add({
+      user: userId,
+      items: reservasById,
+      state: 'En proceso',
+      date: Date.now(),
+    });
     reset();
+    showPurchaseModal(true);
   };
 
   return (

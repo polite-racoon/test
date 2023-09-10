@@ -1,15 +1,11 @@
-import { useContext } from 'react';
 import Link from 'next/link';
 import { Grid } from '@mui/material';
 import { Item } from './Item';
-import { ProductosContext } from '../../context/productos';
 
-export const ItemList = () => {
-  const { productosDisponibles } = useContext(ProductosContext);
-
+export const ItemList = ({ productos = [] }) => {
   return (
     <Grid container spacing={1.3}>
-      {productosDisponibles.map((producto, i) => {
+      {productos.map((producto, i) => {
         const { id } = producto;
         return (
           <Grid item xs={6} md={4} key={id}>

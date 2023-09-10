@@ -37,75 +37,74 @@ export const MisCompras: NextPage = () => {
 
   return (
     <Layout>
-      <Box>
-        <Typography variant="h6">Mis Compras</Typography>
-        {ordenes.map((orden: Orden, i) => {
-          let total = 0;
-          return (
-            <Paper
-              key={orden.id}
-              sx={{
-                padding: '1rem',
-                margin: '1rem 0',
-              }}
-            >
-              <Typography sx={{ fontSize: '0.5rem' }}>{orden.id}</Typography>
-              {i === 0 && (
-                <Typography sx={{ fontSize: '0.5rem', color: green[700] }}>
-                  Última compra
-                </Typography>
-              )}
-              <Box>
-                {Object.keys(orden.items).map((item) => {
-                  const { id, price, quantity, title, imageUrl } =
-                    orden.items[item];
-                  total += price * quantity;
-                  return (
-                    <Box
-                      key={id}
-                      sx={{
-                        display: 'flex',
-                        border: '1px solid lightgray',
-                        borderRadius: '0.5rem',
-                        padding: '0.5rem 1rem',
-                        margin: '0.5rem 0',
-                      }}
-                    >
-                      <Image
-                        src={imageUrl}
-                        width={64}
-                        height={64}
-                        alt={title}
-                        style={{ paddingRight: '1rem' }}
-                      />
-                      <Box>
-                        <Typography sx={{ fontSize: '0.7rem' }}>
-                          {title}
-                        </Typography>
-                        <Typography sx={{ fontSize: '0.7rem' }}>
-                          precio unitario: {price}
-                        </Typography>
-                        <Typography sx={{ fontSize: '0.7rem' }}>
-                          cantidad: {quantity}
-                        </Typography>
-                        <Typography sx={{ fontSize: '0.7rem' }}>
-                          subtotal: {price * quantity}
-                        </Typography>
-                      </Box>
+      <Typography variant="h6">Mis Compras</Typography>
+      {ordenes.map((orden: Orden, i) => {
+        let total = 0;
+        return (
+          <Paper
+            key={orden.id}
+            sx={{
+              padding: '1rem',
+              margin: '1rem 0',
+              minWidth: '60%',
+            }}
+          >
+            <Typography sx={{ fontSize: '0.5rem' }}>{orden.id}</Typography>
+            {i === 0 && (
+              <Typography sx={{ fontSize: '0.5rem', color: green[700] }}>
+                Última compra
+              </Typography>
+            )}
+            <Box>
+              {Object.keys(orden.items).map((item) => {
+                const { id, price, quantity, title, imageUrl } =
+                  orden.items[item];
+                total += price * quantity;
+                return (
+                  <Box
+                    key={id}
+                    sx={{
+                      display: 'flex',
+                      border: '1px solid lightgray',
+                      borderRadius: '0.5rem',
+                      padding: '0.5rem 1rem',
+                      margin: '0.5rem 0',
+                    }}
+                  >
+                    <Image
+                      src={imageUrl}
+                      width={64}
+                      height={64}
+                      alt={title}
+                      style={{ paddingRight: '1rem' }}
+                    />
+                    <Box>
+                      <Typography sx={{ fontSize: '0.7rem' }}>
+                        {title}
+                      </Typography>
+                      <Typography sx={{ fontSize: '0.7rem' }}>
+                        precio unitario: {price}
+                      </Typography>
+                      <Typography sx={{ fontSize: '0.7rem' }}>
+                        cantidad: {quantity}
+                      </Typography>
+                      <Typography sx={{ fontSize: '0.7rem' }}>
+                        subtotal: {price * quantity}
+                      </Typography>
                     </Box>
-                  );
-                })}
-                <Typography sx={{ fontSize: '0.7rem' }}>
-                  total: {total}
-                </Typography>
-                <Typography sx={{ fontSize: '0.7rem' }}>
-                  estado: {orden.state}
-                </Typography>
-              </Box>
-            </Paper>
-          );
-        })}
-      </Box>
+                  </Box>
+                );
+              })}
+              <Typography sx={{ fontSize: '0.7rem' }}>
+                total: {total}
+              </Typography>
+              <Typography sx={{ fontSize: '0.7rem' }}>
+                estado: {orden.state}
+              </Typography>
+            </Box>
+          </Paper>
+        );
+      })}
     </Layout>
   );
 };

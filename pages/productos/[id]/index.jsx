@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { Card } from '@mui/material';
+import { Box, Card } from '@mui/material';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -11,22 +11,23 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import Carousel from 'react-bootstrap/Carousel';
+import { CopyToast } from '../../../components/ui';
 
 import { ProductosContext } from '../../../context/productos';
 import { Layout } from '../../../components/layouts';
 import { AddButton, StockWarningModal } from '../../../components/ui';
 import { Svg } from '../../../components/ui';
+import { UIContext } from '../../../context/ui';
+import { relative } from 'path';
 
 export default function ProductPage() {
   const router = useRouter();
   const id = router.query.id;
-  // const [currentUrl, setcurrentUrl] = useState('');
-  // useEffect(() => {
-  //   setcurrentUrl(new URL(window.location.href));
-  // }, []);
 
   // dynamic import. ProductContext exposes each product individually by id
   const { [id]: product = {} } = useContext(ProductosContext);
+
+  const { showCopyToast } = useContext(UIContext);
 
   const {
     category,
@@ -38,15 +39,22 @@ export default function ProductPage() {
     date,
   } = product;
 
-  const handleShare = async () => {
-    const currentUrl = new URL(window.location.href);
-    console.log(currentUrl);
-    await window.navigator.share(currentUrl);
+  const share = () => {
+    const { href } = new URL(location.href);
+    console.log(href);
+    if (navigator.share) {
+      navigator.share({ url: href });
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      showCopyToast(true);
+    }
   };
+
+  // const addToFavorites = () => {};
 
   return (
     <Layout>
-      <Card sx={{ width: '100%' }}>
+      <Card sx={{ width: '100%', position: 'relative' }}>
         <CardHeader
           avatar={<Svg width={48} height={48} src="/logo.svg" />}
           title={title}
@@ -84,10 +92,10 @@ export default function ProductPage() {
           <AddButton itemData={product} goToCart />
         </CardActions>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
+          {/* <IconButton aria-label="add to favorites" onClick={addToFavorites}>
             <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share" onClick={handleShare}>
+          </IconButton> */}
+          <IconButton aria-label="share" onClick={share}>
             <ShareIcon />
           </IconButton>
         </CardActions>
@@ -98,6 +106,9 @@ export default function ProductPage() {
             </Typography>
           </Link>
         </CardActions>
+        <Box sx={{ position: 'absolute', bottom: '1rem', right: '1rem' }}>
+          <CopyToast />
+        </Box>
       </Card>
       <StockWarningModal />
     </Layout>

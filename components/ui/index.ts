@@ -16,3 +16,4 @@ export * from './MainCarousel';
 export * from './Logo';
 export * from './buttons';
 export * from './modals';
+export * from './CopyToast';

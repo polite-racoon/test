@@ -9,16 +9,14 @@ const AdminDashboard: NextPage = () => {
   const router = useRouter();
   return (
     <Layout>
-      <Box display="flex" alignItems={'center'} flexDirection="column">
-        <Box sx={{ margin: '1rem' }}>
-          <Typography variant="h6">Administrador</Typography>
-        </Box>
-        <IconButton onClick={() => router.push('/admin-dashboard/uploader')}>
-          <CloudUploadIcon sx={{ fontSize: '2.5rem' }} />
-        </IconButton>
-        <br />
-        <DeleteList />
+      <Box sx={{ margin: '1rem' }}>
+        <Typography variant="h6">Administrador</Typography>
       </Box>
+      <IconButton onClick={() => router.push('/admin-dashboard/uploader')}>
+        <CloudUploadIcon sx={{ fontSize: '2.5rem' }} />
+      </IconButton>
+      <br />
+      <DeleteList />
     </Layout>
   );
 };

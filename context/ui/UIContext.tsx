@@ -5,6 +5,7 @@ interface ContextProps {
   addToCartModalOpen: boolean;
   stockWarningModalOpen: boolean;
   purchaseModalOpen: boolean;
+  copyToastOpen: boolean;
   // methods
   openSidemenu: () => void;
   closeSidemenu: () => void;
@@ -16,6 +17,7 @@ interface ContextProps {
   closeStockWarningModal: () => void;
 
   showPurchaseModal: (arg: boolean) => void;
+  showCopyToast: (arg: boolean) => void;
 }
 
 export const UIContext = createContext({} as ContextProps);

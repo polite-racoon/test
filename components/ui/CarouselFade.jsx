@@ -11,8 +11,8 @@ export const CarouselFade = ({ elements, fade = true }) => {
               className="d-block w-100"
               src={element.landscapeImgUrl}
               alt={element.title}
-              width={600}
-              height={400}
+              width={557}
+              height={418}
               priority={i === 0}
             />
             <Carousel.Caption>

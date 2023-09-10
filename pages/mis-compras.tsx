@@ -5,6 +5,7 @@ import { Box, Paper, Typography } from '@mui/material';
 import { Layout } from '../components/layouts';
 import { useAuth } from '../context/auth';
 import { Orden } from '../interfaces/orden';
+import { green } from '@mui/material/colors';
 
 // export async function getServerSideProps() {}
 
@@ -24,7 +25,7 @@ export const MisCompras: NextPage = () => {
         });
         const { data, error } = await response.json();
         if (error) return;
-        data.sort((a: Orden, b: Orden) => a.date - b.date);
+        data.sort((a: Orden, b: Orden) => b.date - a.date);
         setOrdenes(data);
       } catch {
         return;
@@ -38,17 +39,22 @@ export const MisCompras: NextPage = () => {
     <Layout>
       <Box>
         <Typography variant="h6">Mis Compras</Typography>
-        {ordenes.map((orden: Orden) => {
+        {ordenes.map((orden: Orden, i) => {
           let total = 0;
           return (
             <Paper
               key={orden.id}
               sx={{
                 padding: '1rem',
-                margin: '1rem',
+                margin: '1rem 0',
               }}
             >
               <Typography sx={{ fontSize: '0.5rem' }}>{orden.id}</Typography>
+              {i === 0 && (
+                <Typography sx={{ fontSize: '0.5rem', color: green[700] }}>
+                  Última compra
+                </Typography>
+              )}
               <Box>
                 {Object.keys(orden.items).map((item) => {
                   const { id, price, quantity, title, imageUrl } =
@@ -67,8 +73,8 @@ export const MisCompras: NextPage = () => {
                     >
                       <Image
                         src={imageUrl}
-                        width={50}
-                        height={60}
+                        width={64}
+                        height={64}
                         alt={title}
                         style={{ paddingRight: '1rem' }}
                       />

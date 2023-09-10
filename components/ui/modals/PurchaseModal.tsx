@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { Box, Modal, Typography } from '@mui/material';
 import { Logo } from '../Logo';
 
@@ -23,10 +24,16 @@ interface PurchaseModalProps {
 export const PurchaseModal = ({ message }: PurchaseModalProps) => {
   const { purchaseModalOpen, showPurchaseModal } = useContext(UIContext);
 
+  const router = useRouter();
+  const handleClose = () => {
+    showPurchaseModal(false);
+    router.push('/mis-compras');
+  };
+
   return (
     <Modal
       open={purchaseModalOpen}
-      onClose={() => showPurchaseModal(false)}
+      onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
@@ -40,7 +47,6 @@ export const PurchaseModal = ({ message }: PurchaseModalProps) => {
         >
           {message}
         </Typography>
-        {/* <Button>Ver compras</Button> */}
       </Box>
     </Modal>
   );

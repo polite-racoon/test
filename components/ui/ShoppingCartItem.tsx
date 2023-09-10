@@ -50,8 +50,8 @@ export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
           <Grid item xs={4}>
             <Image
               src={imageUrl}
-              width={680}
-              height={1020}
+              width={274}
+              height={365}
               alt=""
               priority={priority}
             />

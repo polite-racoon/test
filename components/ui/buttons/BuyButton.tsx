@@ -31,11 +31,13 @@ export const BuyButton = ({ disabled }: BuyButtonProps) => {
         .update({ stock: product!.stock - reservasById[id]!.quantity });
     });
     await Promise.all(updatePromises);
-    const addCompraResult = await db.collection('orders').add({
+    const date = Date.now();
+
+    await db.collection('orders').add({
       user: userId,
       items: reservasById,
       state: 'En proceso',
-      date: Date.now(),
+      date,
     });
     reset();
     showPurchaseModal(true);

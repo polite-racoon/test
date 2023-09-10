@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { Card } from '@mui/material';
@@ -20,6 +20,10 @@ import { Svg } from '../../../components/ui';
 export default function ProductPage() {
   const router = useRouter();
   const id = router.query.id;
+  // const [currentUrl, setcurrentUrl] = useState('');
+  // useEffect(() => {
+  //   setcurrentUrl(new URL(window.location.href));
+  // }, []);
 
   // dynamic import. ProductContext exposes each product individually by id
   const { [id]: product = {} } = useContext(ProductosContext);
@@ -33,6 +37,12 @@ export default function ProductPage() {
     price,
     date,
   } = product;
+
+  const handleShare = async () => {
+    const currentUrl = new URL(window.location.href);
+    console.log(currentUrl);
+    await window.navigator.share(currentUrl);
+  };
 
   return (
     <Layout>
@@ -77,7 +87,7 @@ export default function ProductPage() {
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
-          <IconButton aria-label="share">
+          <IconButton aria-label="share" onClick={handleShare}>
             <ShareIcon />
           </IconButton>
         </CardActions>

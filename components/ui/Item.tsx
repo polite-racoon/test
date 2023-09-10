@@ -16,8 +16,8 @@ export const Item = ({
     <Card sx={{ position: 'relative', paddingBottom: '6rem' }}>
       <Image
         src={imageUrl}
-        width={680}
-        height={1020}
+        width={274}
+        height={365}
         alt=""
         priority={index < 2}
       />

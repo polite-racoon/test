@@ -1,10 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // reactStrictMode: true,
-  // swcMinify: false,
-  // compiler: {
-  //   removeConsole: process.env.NODE_ENV !== "development",
-  // },
+  compiler: {
+    removeConsole: process.env.NODE_ENV !== 'development',
+  },
   reactStrictMode: false,
   swcMinify: true,
   images: {

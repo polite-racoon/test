@@ -1,10 +1,7 @@
 import { useContext } from 'react';
 import { Button } from '@mui/material';
 
-import firebase from '../../../firebase/client';
 import { useAuth } from '../../../context/auth';
-import { ReservasContext } from '../../../context/reservas';
-import { ProductosContext } from '../../../context/productos';
 import { UIContext } from '../../../context/ui';
 
 interface BuyButtonProps {
@@ -13,34 +10,10 @@ interface BuyButtonProps {
 }
 
 export const BuyButton = ({ disabled }: BuyButtonProps) => {
-  const { reservasById, reset } = useContext(ReservasContext);
-  const { productsByIdObj } = useContext(ProductosContext);
-  const reservasIds = Object.keys(reservasById);
-  const { showPurchaseModal } = useContext(UIContext);
-
-  const { user } = useAuth();
-  const userId = user?.uid;
-  console.log(userId);
+  const { showPhoneModal } = useContext(UIContext);
 
   const handleBuy = async () => {
-    const db = firebase.firestore();
-    const updatePromises = reservasIds.map((id) => {
-      const product = productsByIdObj[id];
-      db.collection('productos')
-        .doc(id)
-        .update({ stock: product!.stock - reservasById[id]!.quantity });
-    });
-    await Promise.all(updatePromises);
-    const date = Date.now();
-
-    await db.collection('orders').add({
-      user: userId,
-      items: reservasById,
-      state: 'En proceso',
-      date,
-    });
-    reset();
-    showPurchaseModal(true);
+    showPhoneModal(true);
   };
 
   return (

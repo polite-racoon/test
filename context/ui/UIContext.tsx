@@ -6,6 +6,8 @@ interface ContextProps {
   stockWarningModalOpen: boolean;
   purchaseModalOpen: boolean;
   copyToastOpen: boolean;
+  phoneModalOpen: boolean;
+
   // methods
   openSidemenu: () => void;
   closeSidemenu: () => void;
@@ -18,6 +20,7 @@ interface ContextProps {
 
   showPurchaseModal: (arg: boolean) => void;
   showCopyToast: (arg: boolean) => void;
+  showPhoneModal: (arg: boolean) => void;
 }
 
 export const UIContext = createContext({} as ContextProps);

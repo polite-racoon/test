@@ -11,6 +11,7 @@ export interface UIState {
   stockWarningModalOpen: boolean;
   purchaseModalOpen: boolean;
   copyToastOpen: boolean;
+  phoneModalOpen: boolean;
 }
 
 const UI_INITIAL_STATE: UIState = {
@@ -19,6 +20,7 @@ const UI_INITIAL_STATE: UIState = {
   stockWarningModalOpen: false,
   purchaseModalOpen: false,
   copyToastOpen: false,
+  phoneModalOpen: false,
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
@@ -56,6 +58,10 @@ export const UIProvider: FC<Props> = ({ children }) => {
     dispatch({ type: '[UI] - show copy toast', payload: arg });
   };
 
+  const showPhoneModal = (arg: boolean) => {
+    dispatch({ type: '[UI] - show phone modal', payload: arg });
+  };
+
   return (
     <UIContext.Provider
       value={{
@@ -68,6 +74,7 @@ export const UIProvider: FC<Props> = ({ children }) => {
         closeStockWarningModal,
         showPurchaseModal,
         showCopyToast,
+        showPhoneModal,
       }}
     >
       {children}

@@ -5,6 +5,7 @@ import { ReservasContext } from '../context/reservas';
 import { ShoppingCartItem } from '../components/ui';
 import { BuyButton } from '../components/ui/buttons/BuyButton';
 import { PurchaseModal } from '../components/ui/modals/PurchaseModal';
+import { PhoneModal } from '../components/ui/modals/PhoneModal';
 
 const ShoppingCartPage = () => {
   const { reservas } = useContext(ReservasContext);
@@ -54,6 +55,7 @@ const ShoppingCartPage = () => {
         >{` $${total}`}</Typography>
       </Paper>
       <BuyButton disabled={total === 0} />
+      <PhoneModal />
       <PurchaseModal message="Tu compra se ha realizado con éxito" />
     </Layout>
   );

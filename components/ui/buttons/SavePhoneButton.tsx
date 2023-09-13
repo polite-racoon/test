@@ -9,10 +9,11 @@ import { useAuth } from '../../../context/auth';
 
 interface Props {
   phone: string;
+  repeatedPhone: string;
   disabled: boolean;
 }
 
-export function SavePhoneButton({ phone, disabled }: Props) {
+export function SavePhoneButton({ phone, repeatedPhone, disabled }: Props) {
   const { reservasById, reset } = useContext(ReservasContext);
   const { productsByIdObj } = useContext(ProductosContext);
   const reservasIds = Object.keys(reservasById);
@@ -20,18 +21,18 @@ export function SavePhoneButton({ phone, disabled }: Props) {
   const { user } = useAuth();
 
   const savePhone = async () => {
-    if (!user) {
-      showPhoneModal(false);
-      return;
+    if (phone !== repeatedPhone) {
     }
     const db = firebase.firestore();
+
     try {
-      await db.collection('phones').add({ phone, uid: user.uid });
+      await db.collection('phones').doc(user.uid).set({ phone });
     } catch (error) {
       console.log(error);
       alert('Error al guardar teléfono');
       return;
     }
+
     try {
       const updatePromises = reservasIds.map((id) => {
         const product = productsByIdObj[id];

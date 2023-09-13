@@ -12,6 +12,7 @@ export interface UIState {
   purchaseModalOpen: boolean;
   copyToastOpen: boolean;
   phoneModalOpen: boolean;
+  signinOpen: boolean;
 }
 
 const UI_INITIAL_STATE: UIState = {
@@ -21,6 +22,7 @@ const UI_INITIAL_STATE: UIState = {
   purchaseModalOpen: false,
   copyToastOpen: false,
   phoneModalOpen: false,
+  signinOpen: false,
 };
 
 export const UIProvider: FC<Props> = ({ children }) => {
@@ -62,6 +64,10 @@ export const UIProvider: FC<Props> = ({ children }) => {
     dispatch({ type: '[UI] - show phone modal', payload: arg });
   };
 
+  const showSigninModal = (arg: boolean) => {
+    dispatch({ type: '[UI] - show signin modal', payload: arg });
+  };
+
   return (
     <UIContext.Provider
       value={{
@@ -75,6 +81,7 @@ export const UIProvider: FC<Props> = ({ children }) => {
         showPurchaseModal,
         showCopyToast,
         showPhoneModal,
+        showSigninModal,
       }}
     >
       {children}

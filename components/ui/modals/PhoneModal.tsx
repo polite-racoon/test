@@ -1,7 +1,7 @@
-import { SetStateAction, useContext, useState } from 'react';
+import { Dispatch, SetStateAction, useContext, useState } from 'react';
 import {
   Box,
-  FormControl,
+  FormGroup,
   FormHelperText,
   Input,
   Modal,
@@ -24,16 +24,33 @@ const style = {
   p: 4,
 };
 
-export const PhoneModal = () => {
-  const [phone, setPhone] = useState('');
+interface Props {
+  phone: string;
+  setPhone: Dispatch<SetStateAction<string>>;
+  repeatedPhone: string;
+  setRepeatedPhone: Dispatch<SetStateAction<string>>;
+}
+
+export const PhoneModal = ({
+  phone,
+  setPhone,
+  repeatedPhone,
+  setRepeatedPhone,
+}: Props) => {
   const { phoneModalOpen, showPhoneModal } = useContext(UIContext);
 
   const handleClose = () => {
     showPhoneModal(false);
   };
 
-  const handleChange = (e: { target: { value: SetStateAction<string> } }) => {
+  const onPhoneChange = (e: { target: { value: SetStateAction<string> } }) => {
     setPhone(e.target.value);
+  };
+
+  const onRepeatedPhoneChange = (e: {
+    target: { value: SetStateAction<string> };
+  }) => {
+    setRepeatedPhone(e.target.value);
   };
 
   return (
@@ -45,25 +62,46 @@ export const PhoneModal = () => {
     >
       <Box sx={style}>
         <Logo />
-        <FormControl>
+        <FormGroup>
           <Box display="flex" alignItems="center">
             <Typography>+569&nbsp;</Typography>
             <Input
               id="my-input"
               aria-describedby="my-helper-text"
-              onChange={handleChange}
+              onChange={onPhoneChange}
               value={phone}
               autoFocus
+              type="number"
             />
           </Box>
           <FormHelperText id="my-helper-text" sx={{ paddingLeft: '2rem' }}>
-            Déjanos un teléfono de contacto
+            &nbsp;&nbsp;&nbsp;Déjanos un teléfono de contacto
+          </FormHelperText>
+          <Box display="flex" alignItems="center">
+            <Typography>+569&nbsp;</Typography>
+            <Input
+              id="my-input"
+              aria-describedby="my-helper-text"
+              onChange={onRepeatedPhoneChange}
+              value={repeatedPhone}
+              autoFocus
+              type="number"
+            />
+          </Box>
+          <FormHelperText id="my-helper-text" sx={{ paddingLeft: '2rem' }}>
+            &nbsp;&nbsp;&nbsp;Confirmar número{' '}
+            {phone !== repeatedPhone && (
+              <span style={{ color: 'darkred' }}>(No coinciden)</span>
+            )}
           </FormHelperText>
           <SavePhoneButton
             phone={phone}
-            disabled={phone.length !== 8 || !Number(phone)}
+            repeatedPhone={repeatedPhone}
+            disabled={
+              phone.length !== 8 || !Number(phone) || phone !== repeatedPhone
+            }
           />
-        </FormControl>
+        </FormGroup>
       </Box>
     </Modal>
   );

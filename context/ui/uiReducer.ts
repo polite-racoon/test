@@ -9,7 +9,8 @@ type UIActionType =
   | { type: '[UI] - close stock-warning modal' }
   | { type: '[UI] - show purchase modal'; payload: boolean }
   | { type: '[UI] - show copy toast'; payload: boolean }
-  | { type: '[UI] - show phone modal'; payload: boolean };
+  | { type: '[UI] - show phone modal'; payload: boolean }
+  | { type: '[UI] - show signin modal'; payload: boolean };
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
   switch (action.type) {
@@ -65,6 +66,12 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
       return {
         ...state,
         phoneModalOpen: action.payload,
+      };
+
+    case '[UI] - show signin modal':
+      return {
+        ...state,
+        signinOpen: action.payload,
       };
 
     default:

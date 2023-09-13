@@ -18,13 +18,18 @@ const Home = () => {
 
   return (
     <Layout>
-      <Box sx={{ margin: '1rem 0 2rem 0' }}>{!user && <Logger />}</Box>
+      {!user && (
+        <Box sx={{ margin: '1.5rem 0 2rem 0' }}>
+          {' '}
+          <Logger />
+        </Box>
+      )}
       <MainCarousel productos={productosDisponibles} />
       <Box display="flex" justifyContent="center">
         <Typography
           sx={{ margin: '2rem', fontFamily: 'Sacramento', fontSize: '1.5rem' }}
         >
-          - lorem ipsum dolor -
+          - damos vida a tu hogar -
         </Typography>
       </Box>
       <ItemList productos={productosDisponibles} />

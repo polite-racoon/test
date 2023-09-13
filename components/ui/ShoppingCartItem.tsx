@@ -44,7 +44,7 @@ export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
   };
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12}>
       <Paper sx={{ padding: '0.5rem' }}>
         <Grid container spacing={0}>
           <Grid item xs={4}>
@@ -70,7 +70,7 @@ export const ShoppingCartItem = ({ reserva, priority }: ShoppinCartProps) => {
             <Typography>{title}</Typography>
             <Typography>${price}</Typography>
 
-            <FormControl fullWidth>
+            <FormControl sx={{ width: '50%', marginTop: '0.5rem' }}>
               <InputLabel id="demo-simple-select-label">cantidad</InputLabel>
               <Select
                 labelId="demo-simple-select-label"

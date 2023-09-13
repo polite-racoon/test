@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Box, Grid, Typography, Paper } from '@mui/material';
 import { Layout } from '../components/layouts';
 import { ReservasContext } from '../context/reservas';
@@ -6,8 +6,12 @@ import { ShoppingCartItem } from '../components/ui';
 import { BuyButton } from '../components/ui/buttons/BuyButton';
 import { PurchaseModal } from '../components/ui/modals/PurchaseModal';
 import { PhoneModal } from '../components/ui/modals/PhoneModal';
+import { SigninModal } from '../components/ui/modals/SigninModal';
 
 const ShoppingCartPage = () => {
+  const [phone, setPhone] = useState('');
+  const [repeatedPhone, setRepeatedPhone] = useState('');
+
   const { reservas } = useContext(ReservasContext);
   let total = 0;
   reservas.forEach((reserva) => {
@@ -54,8 +58,18 @@ const ShoppingCartPage = () => {
           sx={{ fonSize: '1.5rem', fontFamily: 'Sacramento' }}
         >{` $${total}`}</Typography>
       </Paper>
-      <BuyButton disabled={total === 0} />
-      <PhoneModal />
+      <BuyButton
+        disabled={total === 0}
+        setPhone={setPhone}
+        setRepeatedPhone={setRepeatedPhone}
+      />
+      <SigninModal />
+      <PhoneModal
+        phone={phone}
+        setPhone={setPhone}
+        repeatedPhone={repeatedPhone}
+        setRepeatedPhone={setRepeatedPhone}
+      />
       <PurchaseModal message="Tu compra se ha realizado con éxito" />
     </Layout>
   );

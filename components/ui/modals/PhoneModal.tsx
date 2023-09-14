@@ -70,8 +70,8 @@ export const PhoneModal = ({
               aria-describedby="my-helper-text"
               onChange={onPhoneChange}
               value={phone}
-              autoFocus
               type="number"
+              autoFocus={!phone}
             />
           </Box>
           <FormHelperText id="my-helper-text" sx={{ paddingLeft: '2rem' }}>
@@ -84,7 +84,6 @@ export const PhoneModal = ({
               aria-describedby="my-helper-text"
               onChange={onRepeatedPhoneChange}
               value={repeatedPhone}
-              autoFocus
               type="number"
             />
           </Box>
@@ -96,7 +95,6 @@ export const PhoneModal = ({
           </FormHelperText>
           <SavePhoneButton
             phone={phone}
-            repeatedPhone={repeatedPhone}
             disabled={
               phone.length !== 8 || !Number(phone) || phone !== repeatedPhone
             }

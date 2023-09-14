@@ -10,7 +10,7 @@ import {
 import { Logo } from '../Logo';
 
 import { UIContext } from '../../../context/ui';
-// import { SavePhoneButton } from '../buttons/SavePhoneButton';
+import { SavePhoneButton } from '../buttons/SavePhoneButton';
 
 const style = {
   position: 'absolute',
@@ -60,11 +60,10 @@ export const PhoneModal = () => {
           <FormHelperText id="my-helper-text" sx={{ paddingLeft: '2rem' }}>
             Déjanos un teléfono de contacto
           </FormHelperText>
-          {/* <SavePhoneButton
+          <SavePhoneButton
             phone={phone}
-            repeatedPhone={repeatedPhone}
             disabled={phone.length !== 8 || !Number(phone)}
-          /> */}
+          />
         </FormControl>
       </Box>
     </Modal>

@@ -9,11 +9,10 @@ import { useAuth } from '../../../context/auth';
 
 interface Props {
   phone: string;
-  repeatedPhone: string;
   disabled: boolean;
 }
 
-export function SavePhoneButton({ phone, repeatedPhone, disabled }: Props) {
+export function SavePhoneButton({ phone, disabled }: Props) {
   const { reservasById, reset } = useContext(ReservasContext);
   const { productsByIdObj } = useContext(ProductosContext);
   const reservasIds = Object.keys(reservasById);
@@ -21,8 +20,6 @@ export function SavePhoneButton({ phone, repeatedPhone, disabled }: Props) {
   const { user } = useAuth();
 
   const savePhone = async () => {
-    if (phone !== repeatedPhone) {
-    }
     const db = firebase.firestore();
 
     try {

@@ -6,6 +6,7 @@ import { Layout } from '../components/layouts';
 import { useAuth } from '../context/auth';
 import { Orden } from '../interfaces/orden';
 import { green } from '@mui/material/colors';
+import firebase from '../firebase/client';
 
 // export async function getServerSideProps() {}
 
@@ -13,21 +14,34 @@ export const MisCompras: NextPage = () => {
   const [ordenes, setOrdenes] = useState([]);
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
-
   useEffect(() => {
     const getOrdenes = async () => {
       try {
-        const response = await fetch('/api/ordenes', {
-          method: 'POST',
-          body: JSON.stringify({ user }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        const { data, error } = await response.json();
-        if (error) return;
-        data.sort((a: Orden, b: Orden) => b.date - a.date);
-        setOrdenes(data);
+        // const response = await fetch('/api/ordenes', {
+        //   method: 'POST',
+        //   body: JSON.stringify({ user }),
+        //   headers: {
+        //     'Content-Type': 'application/json',
+        //   },
+        // });
+        // const { data, error } = await response.json();
+        // if (error) return;
+        // data.sort((a: Orden, b: Orden) => b.date - a.date);
+        // setOrdenes(data);
+        const db = firebase.firestore();
+        db.collection('orders')
+          .where('user', '==', user.uid)
+          .get()
+          .then((qs) => {
+            const orders: any = [];
+            qs.forEach((doc) => {
+              orders.push({
+                id: doc.id,
+                ...doc.data(),
+              });
+            });
+            setOrdenes(orders);
+          });
       } catch {
         return;
       }

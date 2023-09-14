@@ -19,6 +19,7 @@ import { AddButton, StockWarningModal } from '../../../components/ui';
 import { Svg } from '../../../components/ui';
 import { UIContext } from '../../../context/ui';
 import { relative } from 'path';
+import Head from 'next/head';
 
 export default function ProductPage() {
   const router = useRouter();
@@ -53,64 +54,73 @@ export default function ProductPage() {
   // const addToFavorites = () => {};
 
   return (
-    <Layout>
-      <Card sx={{ width: '100%', position: 'relative' }}>
-        <CardHeader
-          avatar={<Svg width={48} height={48} src="/logo.svg" />}
-          title={title}
-          subheader={new Date(date).toLocaleDateString()}
-        />
-        <Carousel interval={null}>
-          {[imageUrl, landscapeImgUrl].map((element, i) => {
-            return (
-              <Carousel.Item key={i}>
-                <CardMedia
-                  component="img"
-                  height="400"
-                  image={element}
-                  alt={`imagen ${i + 1}`}
-                />
-              </Carousel.Item>
-            );
-          })}
-        </Carousel>
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-          <br />
-          <Typography variant="body1" color="text.secondary">
-            ${price}
-          </Typography>
-        </CardContent>
-        <CardActions
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-          }}
-        >
-          <AddButton itemData={product} goToCart />
-        </CardActions>
-        <CardActions disableSpacing>
-          {/* <IconButton aria-label="add to favorites" onClick={addToFavorites}>
-            <FavoriteIcon />
-          </IconButton> */}
-          <IconButton aria-label="share" onClick={share}>
-            <ShareIcon />
-          </IconButton>
-        </CardActions>
-        <CardActions>
-          <Link href={`/${category}`}>
+    <>
+      <Head>
+        {/* <meta name="description" content="" />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content={`https://matute.vercel.app/${id}`} />
+        <meta property="og:description" content={description} /> */}
+        <meta property="og:image" content={imageUrl} />
+      </Head>
+      <Layout>
+        <Card sx={{ width: '100%', position: 'relative' }}>
+          <CardHeader
+            avatar={<Svg width={48} height={48} src="/logo.svg" />}
+            title={title}
+            subheader={new Date(date).toLocaleDateString()}
+          />
+          <Carousel interval={null}>
+            {[imageUrl, landscapeImgUrl].map((element, i) => {
+              return (
+                <Carousel.Item key={i}>
+                  <CardMedia
+                    component="img"
+                    height="400"
+                    image={element}
+                    alt={`imagen ${i + 1}`}
+                  />
+                </Carousel.Item>
+              );
+            })}
+          </Carousel>
+          <CardContent>
             <Typography variant="body2" color="text.secondary">
-              Ver mas {category}
+              {description}
             </Typography>
-          </Link>
-        </CardActions>
-        <Box sx={{ position: 'absolute', bottom: '1rem', right: '1rem' }}>
-          <CopyToast />
-        </Box>
-      </Card>
-      <StockWarningModal />
-    </Layout>
+            <br />
+            <Typography variant="body1" color="text.secondary">
+              ${price}
+            </Typography>
+          </CardContent>
+          <CardActions
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <AddButton itemData={product} goToCart />
+          </CardActions>
+          <CardActions disableSpacing>
+            {/* <IconButton aria-label="add to favorites" onClick={addToFavorites}>
+        <FavoriteIcon />
+      </IconButton> */}
+            <IconButton aria-label="share" onClick={share}>
+              <ShareIcon />
+            </IconButton>
+          </CardActions>
+          <CardActions>
+            <Link href={`/${category}`}>
+              <Typography variant="body2" color="text.secondary">
+                Ver mas {category}
+              </Typography>
+            </Link>
+          </CardActions>
+          <Box sx={{ position: 'absolute', bottom: '1rem', right: '1rem' }}>
+            <CopyToast />
+          </Box>
+        </Card>
+        <StockWarningModal />
+      </Layout>
+    </>
   );
 }

@@ -56,11 +56,7 @@ export const Navbar = () => {
           </IconButton>
         )}
         <Box onClick={() => router.push('/')}>
-          <Typography
-            variant="h4"
-            fontFamily={'Sacramento'}
-            sx={{ userSelect: 'none' }}
-          >
+          <Typography variant="h4" fontFamily={'Sacramento'}>
             tiendita nomada
           </Typography>
         </Box>

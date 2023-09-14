@@ -7,7 +7,6 @@ import {
 } from '@mui/material';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import PinterestIcon from '@mui/icons-material/Pinterest';
 
 export const Footer = () => {
   return (
@@ -16,6 +15,7 @@ export const Footer = () => {
         position: 'sticky',
         bottom: 0,
         width: '100%',
+        zIndex: 10,
       }}
     >
       <Divider />

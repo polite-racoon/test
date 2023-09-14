@@ -3,13 +3,14 @@ import Image from 'next/image';
 import { Box, CircularProgress, Paper, Typography } from '@mui/material';
 import { Layout } from '../../components/layouts';
 import { useAuth } from '../../context/auth';
-import { Orden } from '../../interfaces/orden';
 import firebase from '../../firebase/client';
+import OrdersStateSelector from '../../components/ui/OrderStateSelector';
 
 export const Orders = () => {
   const [ordenes, setOrdenes] = useState([]);
   const { user } = useAuth();
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const getOrdenes = async () => {
       try {
@@ -111,15 +112,17 @@ export const Orders = () => {
               <Typography sx={{ fontSize: '0.5rem' }}>
                 id: {orden.id}
               </Typography>
-              <Typography variant="body2">
-                usuario: {orden.name}{' '}
-                {orden.emailVerified && (
-                  <span style={{ color: 'green', fontSize: '0.5rem' }}>
-                    (verificado)
-                  </span>
-                )}
-              </Typography>
+              <Typography variant="body2">usuario: {orden.name} </Typography>
               <Typography variant="body2">email: {orden.email}</Typography>
+              {orden.emailVerified ? (
+                <Typography sx={{ color: 'green' }}>
+                  Email verificado
+                </Typography>
+              ) : (
+                <Typography sx={{ color: 'darkred' }}>
+                  Email sin verificar
+                </Typography>
+              )}
               <Typography variant="body2">teléfono: {orden.phone}</Typography>
               <Typography variant="body2">
                 fecha: {new Date(orden.date).toLocaleDateString()}
@@ -167,9 +170,7 @@ export const Orders = () => {
                 <Typography sx={{ fontSize: '0.7rem' }}>
                   total: {total}
                 </Typography>
-                <Typography sx={{ fontSize: '0.7rem' }}>
-                  estado: {orden.state}
-                </Typography>
+                <OrdersStateSelector />
               </Box>
             </Paper>
           );

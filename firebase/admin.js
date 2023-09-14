@@ -7,7 +7,8 @@
 
 // export default app;
 import admin from 'firebase-admin';
-import serviceAccount from './key/sweet-cookie-boutique-firebase-adminsdk-la1zi-83d6429866.json';
+
+const serviceAccount = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS);
 
 if (!admin.apps.length) {
   try {

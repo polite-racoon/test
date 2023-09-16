@@ -88,7 +88,7 @@ export const Orders = () => {
 
   return (
     <Layout>
-      <Typography variant="h6">Ordenes</Typography>
+      <Typography variant="h6">Órdenes</Typography>
       {loading ? (
         <Box sx={{ padding: '4rem' }}>
           <CircularProgress disableShrink color="info" />

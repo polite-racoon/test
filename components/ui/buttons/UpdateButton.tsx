@@ -26,7 +26,7 @@ export const UpdateButton = ({ id, newStock, disabled }: UploadButtonProps) => {
       size="small"
       sx={{
         textTransform: 'none',
-        marginLeft: '1rem',
+        marginTop: '0.5rem',
       }}
       endIcon={<UpdateIcon />}
       onClick={() => {

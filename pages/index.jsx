@@ -29,7 +29,7 @@ const Home = () => {
         <Typography
           sx={{ margin: '2rem', fontFamily: 'Sacramento', fontSize: '1.5rem' }}
         >
-          - damos vida a tu hogar -
+          - damos vida a tus espacios -
         </Typography>
       </Box>
       <ItemList productos={productosDisponibles} />

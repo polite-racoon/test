@@ -34,7 +34,10 @@ function useProvideAuth() {
     return firebase
       .auth()
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((response) => handleUser(response.user));
+      .then((response) => {
+        console.log(response);
+        return handleUser(response.user);
+      });
   };
 
   const signout = () => {

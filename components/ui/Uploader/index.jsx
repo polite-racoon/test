@@ -131,10 +131,10 @@ export const Uploader = () => {
               <textarea
                 name="description"
                 value={formData.description}
-                maxLength={200}
+                maxLength={1000}
                 onChange={onInputChange}
                 placeholder={'Descripción'}
-                rows={7}
+                rows={20}
               />
             </div>
             <p className={errorObj.category ? 'error' : 'notError'}>

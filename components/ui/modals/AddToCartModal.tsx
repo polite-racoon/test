@@ -52,7 +52,7 @@ export const AddToCartModal = () => {
             component="h2"
             sx={{ textAlign: 'center' }}
           >
-            Producto agragado al carrito
+            Producto agregado al carrito
           </Typography>
           <CheckIcon fontSize="small" />
         </Box>

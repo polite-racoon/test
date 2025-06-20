@@ -109,6 +109,9 @@ const upload = (
             setImage(null);
             setLandscapeImage(null);
             setLoading(false);
+
+            // Clear localStorage
+            localStorage.removeItem('formData');
           })
           .catch((error) => {
             console.log(error);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ImageInput from './ImageInput';
 import Loading from './Loading';
 import { isFormValid } from '../../../functions';
@@ -13,6 +13,14 @@ import {
 } from '@mui/material';
 
 export const Uploader = () => {
+  // Load form data from localStorage if available
+  useEffect(() => {
+    const savedFormData = localStorage.getItem('formData');
+    if (savedFormData) {
+      setFormData(JSON.parse(savedFormData));
+    }
+  }, []);
+
   const [image, setImage] = useState(null);
   const [landscapeImg, setLandscapeImg] = useState(null);
 
@@ -40,6 +48,9 @@ export const Uploader = () => {
     const { name, value } = e.target;
     const newFormData = { ...formData, [name]: value };
     setFormData(newFormData);
+
+    // Save in localStorage
+    localStorage.setItem('formData', JSON.stringify(newFormData));
 
     const inputError = !value;
 
